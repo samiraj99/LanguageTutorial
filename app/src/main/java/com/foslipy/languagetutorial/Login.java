@@ -35,11 +35,14 @@ public class Login extends AppCompatActivity {
         Email=findViewById(R.id.Login_ET_Email);
         Pass=findViewById(R.id.Login_ET_Pass);
         dialog=new ProgressDialog(this);
-//
-//        if(firebaseAuth.getCurrentUser()!=null)
-//        {
-//            finish();
-//        }
+        firebaseAuth=FirebaseAuth.getInstance();
+
+        if(firebaseAuth.getCurrentUser()!=null)
+        {
+            finish();
+            Intent home=new Intent(Login.this,Home.class);
+            startActivity(home);
+        }
 
         SignIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,9 +67,13 @@ public class Login extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful())
                         {
-                            Toast.makeText(Login.this, "success", Toast.LENGTH_SHORT).show();
+                            finish();
+                            Intent home = new Intent(Login.this,Home.class);
+                            startActivity(home);
+                            Toast.makeText(Login.this, "Successfully Log In..!", Toast.LENGTH_SHORT).show();
                             dialog.dismiss();
-                        }else {
+                        }else
+                        {
                             Toast.makeText(Login.this, "Log in Failed ...! ", Toast.LENGTH_SHORT).show();
                             dialog.dismiss();
                         }
