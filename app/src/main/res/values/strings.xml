@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Language Tutorial</string>
+    <string name="new_user_registration">New User Registration …!</string>
+    <string name="user_log_in">User Log in</string>
+    <string name="enter_password">Enter password</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="registration">Registration</string>
+    <string name="email">Email</string>
+    <string name="occupation">Occupation</string>
+    <string name="password">Password</string>
+    <string name="sign_up">Sign up</string>
+    <string name="sign_in">Sign In</string>
+    <string name="app_name">Language Tutorial</string>
 </resources>
