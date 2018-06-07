@@ -6,7 +6,7 @@
     tools:context="com.foslipy.languagetutorial.Login">
 
     <EditText
-        android:id="@+id/ET_Email"
+        android:id="@+id/Login_ET_Email"
         android:layout_width="300dp"
         android:layout_height="35dp"
         android:layout_alignParentTop="true"
@@ -17,10 +17,10 @@
         android:inputType="textEmailAddress" />
 
     <EditText
-        android:id="@+id/ET_Pass"
+        android:id="@+id/Login_ET_Pass"
         android:layout_width="300dp"
         android:layout_height="35dp"
-        android:layout_below="@+id/ET_Email"
+        android:layout_below="@+id/Login_ET_Email"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:background="#dfdede"
@@ -31,7 +31,7 @@
         android:id="@+id/BT_Sign_In"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ET_Pass"
+        android:layout_below="@+id/Login_ET_Pass"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
         android:background="#4854f5"
@@ -60,5 +60,18 @@
     android:text="@string/sign_up"
     android:textColor="@android:color/white"
     />
+
+
+    <Button
+        android:id="@+id/temp_button"
+        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_below="@id/BT_Sign_In"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="105dp"
+        android:background="#4854f5"
+        android:text="temp_home"
+        android:textColor="@android:color/white"
+        />
 
 </RelativeLayout>
