@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "307680565976",
+    "firebase_url": "https://languagetutorial-623fc.firebaseio.com",
+    "project_id": "languagetutorial-623fc",
+    "storage_bucket": "languagetutorial-623fc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:307680565976:android:444a70e52fdae4f4",
+        "android_client_info": {
+          "package_name": "com.foslipy.languagetutorial"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "307680565976-11pbi2t5vn42e10uakh8tkdvrukm4nib.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "307680565976-11pbi2t5vn42e10uakh8tkdvrukm4nib.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqe4QfgAxnoC92fIqZ1nqk9KSWIxT-7vU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
