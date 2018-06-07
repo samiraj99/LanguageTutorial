@@ -4,8 +4,8 @@
     <item android:id="@+id/home_menu"
         android:title="@string/home"/>
 
-    <item android:id="@+id/BegnersLevel_menu"
-        android:title="@string/bigner_s_level"/>
+    <item android:id="@+id/BeginnersLevel_menu"
+        android:title="@string/beginner_s_level"/>
 
     <item android:id="@+id/AdvancedLevel_menu"
         android:title="@string/advanced_level"/>
