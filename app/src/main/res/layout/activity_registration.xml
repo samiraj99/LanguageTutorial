@@ -71,7 +71,7 @@
         android:layout_marginTop="20dp"
         />
     <Button
-        android:id="@+id/BT_Sign_up"
+        android:id="@+id/BT_Sign_In"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/ET_Pass"
