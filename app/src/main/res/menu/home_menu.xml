@@ -3,26 +3,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-   <group android:id="@+id/menu"
-       android:checkableBehavior="single">
+    <group
+        android:id="@+id/menu"
+        android:checkableBehavior="single">
 
 
-    <item android:id="@+id/home_menu"
-        android:title="@string/home"
-        android:icon="@drawable/ic_icons8_home" />
+        <item
+            android:id="@+id/home_menu"
+            android:icon="@drawable/house"
+            android:title="@string/home" />
 
-    <item android:id="@+id/BeginnersLevel_menu"
-        android:title="@string/beginner_s_level" />
+        <item
+            android:id="@+id/BeginnersLevel_menu"
+            android:icon="@drawable/beginnerslevel"
+            android:title="@string/beginner_s_level" />
 
-    <item android:id="@+id/AdvancedLevel_menu"
-        android:title="@string/advanced_level"/>
+        <item
+            android:id="@+id/AdvancedLevel_menu"
+            android:icon="@drawable/advancerlevel_1"
+            android:title="@string/advanced_level" />
 
-    <item android:id="@+id/ExpertLevel_menu"
-        android:title="@string/expert_level"/>
+        <item
+            android:id="@+id/ExpertLevel_menu"
+            android:icon="@drawable/expertlevel_1"
+            android:title="@string/expert_level" />
 
-    <item android:id="@+id/Ranking_menu"
-        android:title="@string/ranking"/>
+        <item
+            android:id="@+id/Ranking_menu"
+            android:icon="@drawable/rank_1"
+            android:title="@string/ranking" />
 
-   </group>
+        <item
+            android:id="@+id/Logout_menu"
+            android:icon="@drawable/logout"
+            android:title="@string/logout" />
+
+    </group>
 
 </menu>
