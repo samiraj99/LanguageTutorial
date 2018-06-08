@@ -14,22 +14,22 @@
 
         <item
             android:id="@+id/BeginnersLevel_menu"
-            android:icon="@drawable/beginnerslevel"
+            android:icon="@drawable/bigners"
             android:title="@string/beginner_s_level" />
 
         <item
             android:id="@+id/AdvancedLevel_menu"
-            android:icon="@drawable/advancerlevel_1"
+            android:icon="@drawable/advanced"
             android:title="@string/advanced_level" />
 
         <item
             android:id="@+id/ExpertLevel_menu"
-            android:icon="@drawable/expertlevel_1"
+            android:icon="@drawable/expert"
             android:title="@string/expert_level" />
 
         <item
             android:id="@+id/Ranking_menu"
-            android:icon="@drawable/rank_1"
+            android:icon="@drawable/ranking"
             android:title="@string/ranking" />
 
         <item
