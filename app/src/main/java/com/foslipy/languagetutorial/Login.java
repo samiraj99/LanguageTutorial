@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class Login extends AppCompatActivity {
 
 
-    Button SignIn,SignUp;
+    Button SignIn,SignUp,temp;
     EditText Email,Pass;
     ProgressDialog dialog;
     FirebaseAuth firebaseAuth;
@@ -36,6 +36,7 @@ public class Login extends AppCompatActivity {
         Pass=findViewById(R.id.Login_ET_Pass);
         dialog=new ProgressDialog(this);
         firebaseAuth=FirebaseAuth.getInstance();
+        temp=findViewById(R.id.temp_button);
 
         if(firebaseAuth.getCurrentUser()!=null)
         {
@@ -89,6 +90,15 @@ public class Login extends AppCompatActivity {
                 startActivity(Regist);
             }
         });
+
+        temp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent Register = new Intent(Login.this,Home.class);
+                startActivity(Register);
+            }
+        });
+
 
     }
 }

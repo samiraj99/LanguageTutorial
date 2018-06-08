@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+   <group android:id="@+id/menu"
+       android:checkableBehavior="single">
+
 
     <item android:id="@+id/home_menu"
-        android:title="@string/home"/>
+        android:title="@string/home"
+        android:icon="@drawable/ic_icons8_home" />
 
     <item android:id="@+id/BeginnersLevel_menu"
-        android:title="@string/beginner_s_level"/>
+        android:title="@string/beginner_s_level" />
 
     <item android:id="@+id/AdvancedLevel_menu"
         android:title="@string/advanced_level"/>
@@ -15,4 +22,7 @@
 
     <item android:id="@+id/Ranking_menu"
         android:title="@string/ranking"/>
+
+   </group>
+
 </menu>
