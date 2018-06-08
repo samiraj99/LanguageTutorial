@@ -1,12 +1,14 @@
 package com.foslipy.languagetutorial;
 
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-public class Home extends AppCompatActivity {
+public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout homedrawerlayout;
     private ActionBarDrawerToggle homedrawertoggle;
@@ -16,21 +18,38 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        homedrawerlayout=findViewById(R.id.drawerLayout);
-        homedrawertoggle=new ActionBarDrawerToggle(this,homedrawerlayout,R.string.open,R.string.close);
+        homedrawerlayout = findViewById(R.id.drawerLayout);
+        homedrawertoggle = new ActionBarDrawerToggle(this, homedrawerlayout, R.string.open, R.string.close);
         homedrawerlayout.addDrawerListener(homedrawertoggle);
         homedrawertoggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        NavigationView navigationView = findViewById(R.id.home_navigation);
+        navigationView.setNavigationItemSelectedListener(this);
+
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(homedrawertoggle.onOptionsItemSelected(item))
-        {
+        if (homedrawertoggle.onOptionsItemSelected(item)) {
             return true;
         }
         return super.onOptionsItemSelected(item);
 
     }
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.BeginnersLevel_menu:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout,new beginners_fragment()).commit();
+                break;
+
+        }
+
+
+        return true;
+    }
 }
