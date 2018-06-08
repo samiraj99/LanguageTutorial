@@ -39,7 +39,7 @@
         android:layout_marginTop="20dp"
         />
     <EditText
-        android:id="@+id/ET_Email"
+        android:id="@+id/Reg_ET_Email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ET_Last_name"
@@ -53,7 +53,7 @@
         android:id="@+id/ET_Occupation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ET_Email"
+        android:layout_below="@+id/Reg_ET_Email"
         android:layout_centerHorizontal="true"
         android:hint="@string/occupation"
         android:width="350dp"

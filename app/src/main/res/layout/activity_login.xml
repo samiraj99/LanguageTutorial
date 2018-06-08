@@ -62,16 +62,4 @@
     />
 
 
-    <Button
-        android:id="@+id/temp_button"
-        android:layout_height="wrap_content"
-        android:layout_width="150dp"
-        android:layout_below="@id/BT_Sign_In"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="105dp"
-        android:background="#4854f5"
-        android:text="temp_home"
-        android:textColor="@android:color/white"
-        />
-
 </RelativeLayout>
