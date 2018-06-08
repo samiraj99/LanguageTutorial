@@ -27,6 +27,9 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         NavigationView navigationView = findViewById(R.id.home_navigation);
         navigationView.setNavigationItemSelectedListener(this);
 
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout,new home_fragment()).commit();
+        navigationView.setCheckedItem(R.id.home_menu);
+
     }
 
 
@@ -43,6 +46,9 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()){
+            case R.id.home_menu:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout,new home_fragment()).commit();
+                break;
             case R.id.BeginnersLevel_menu:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout,new beginners_fragment()).commit();
                 break;
@@ -58,10 +64,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             case R.id.Logout_menu:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout,new logout_fragment()).commit();
                 break;
-
-
         }
-
 
         return true;
     }
