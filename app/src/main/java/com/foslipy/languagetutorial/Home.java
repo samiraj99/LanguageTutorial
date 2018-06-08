@@ -46,6 +46,19 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             case R.id.BeginnersLevel_menu:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout,new beginners_fragment()).commit();
                 break;
+            case R.id.AdvancedLevel_menu:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout,new advanced_fragment()).commit();
+                break;
+            case R.id.ExpertLevel_menu:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout,new experts_fragment()).commit();
+                break;
+            case R.id.Ranking_menu:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout,new ranking_fragment()).commit();
+                break;
+            case R.id.Logout_menu:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout,new logout_fragment()).commit();
+                break;
+
 
         }
 
