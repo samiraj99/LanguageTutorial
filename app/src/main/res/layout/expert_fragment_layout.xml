@@ -4,37 +4,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Home"
-        android:textAlignment="center"
-        android:textSize="30sp" />
-
-
-    <TextView
-        android:id="@+id/viewProfile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:text="View Profile_Temp"
-        android:textAlignment="center"
-        android:textSize="30sp" />
-
-
     <android.support.design.widget.TabLayout
-        android:id="@+id/home_fragment_tl"
+        android:id="@+id/expert_fragment_tl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
     </android.support.design.widget.TabLayout>
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/home_fragment_vp"
+        android:id="@+id/expert_fragment_vp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
     </android.support.v4.view.ViewPager>
-
 </LinearLayout>

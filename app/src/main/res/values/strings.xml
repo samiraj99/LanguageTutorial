@@ -32,4 +32,7 @@
     <string name="expert_progress">EXPERT PROGRESS</string>
     <string name="profile_details">PROFILE DETAILS</string>
     <string name="advance_progress">ADVANCE PROGRESS</string>
+    <string name="update">Update</string>
+
+
 </resources>

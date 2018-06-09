@@ -8,11 +8,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class ranking_fragment extends Fragment{
+public class AdvancedChapters extends Fragment {
+
+    View view;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.ranking_fragment_layout, container,false);
+        view = inflater.inflate(R.layout.fragment_advanced_chapters, container, false);
+        return view;
     }
+
 }
