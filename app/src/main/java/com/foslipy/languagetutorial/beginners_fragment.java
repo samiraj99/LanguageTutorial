@@ -8,11 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class beginners_fragment extends Fragment {
+public class beginners_fragment extends Fragment{
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.beginners_fragment_layout,container,false);
+        return inflater.inflate(R.layout.fragment_beginners_layout, container,false);
     }
 }

@@ -31,7 +31,9 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         NavigationView navigationView = findViewById(R.id.home_navigation);
         navigationView.setNavigationItemSelectedListener(this);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout,new home_fragment()).commit();
+
+
+        getSupportFragmentManager().beginTransaction().add(R.id.fragmest_container_frame_layout,new home_fragment()).commit();
         navigationView.setCheckedItem(R.id.home_menu);
 
         firebaseAuth=FirebaseAuth.getInstance();
@@ -61,7 +63,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout,new advanced_fragment()).commit();
                 break;
             case R.id.ExpertLevel_menu:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout,new experts_fragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout,new expert_fragment()).commit();
                 break;
             case R.id.Ranking_menu:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout,new ranking_fragment()).commit();

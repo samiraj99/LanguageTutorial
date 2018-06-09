@@ -13,6 +13,8 @@ public class advanced_fragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.advanced_fragment_layout,container,false);
+        return inflater.inflate(R.layout.fragment_advnced_layout, container,false);
     }
+
+
 }
