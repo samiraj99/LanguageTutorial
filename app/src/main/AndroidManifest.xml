@@ -20,7 +20,10 @@
         </activity>
         <activity android:name=".Login" />
         <activity android:name=".Registration" />
-        <activity android:name=".Home"></activity>
+        <activity android:name=".Home" />
+        <activity android:name=".ProfileActivity"
+            android:label="Profile"
+            />
     </application>
 
 </manifest>
