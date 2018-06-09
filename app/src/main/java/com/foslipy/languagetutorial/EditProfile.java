@@ -57,18 +57,19 @@ public class EditProfile extends AppCompatActivity {
                 if(TextUtils.isEmpty(User_First_Name))
                 {
                     Toast.makeText(EditProfile.this, "Enter Email ...!", Toast.LENGTH_SHORT).show();
-                }
-                if(TextUtils.isEmpty(User_Last_Name))
+                    return;
+                }else if(TextUtils.isEmpty(User_Last_Name))
                 {
                     Toast.makeText(EditProfile.this, "Enter Email ...!", Toast.LENGTH_SHORT).show();
-                }
-                if(TextUtils.isEmpty(User_Email))
+                    return;
+                }else if(TextUtils.isEmpty(User_Email))
                 {
                     Toast.makeText(EditProfile.this, "Enter Email ...!", Toast.LENGTH_SHORT).show();
-                }
-                if(TextUtils.isEmpty(User_Occupation))
+                    return;
+                }else if(TextUtils.isEmpty(User_Occupation))
                 {
                     Toast.makeText(EditProfile.this, "Enter Email ...!", Toast.LENGTH_SHORT).show();
+                    return;
                 }
                 dialog.setMessage("Updating...!");
                 dialog.show();
