@@ -1,9 +1,12 @@
 package com.foslipy.languagetutorial;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,6 +24,8 @@ TextView Image_first_name,First_name,Last_name,Email,Occupation;
 FirebaseUser user;
 String uid;
 ProgressDialog dialog;
+Button Edit;
+String User_first_name,User_last_name,User_email,User_occupation;
 @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +38,7 @@ ProgressDialog dialog;
         Last_name=findViewById(R.id.Profile_last_name);
         Email=findViewById(R.id.Profile_email);
         Occupation=findViewById(R.id.Profile_occupation);
+        Edit=findViewById(R.id.Profile_button_edit);
         dialog=new ProgressDialog(this);
 
         dialog.setMessage("Loading..!");
@@ -40,10 +46,10 @@ ProgressDialog dialog;
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String User_first_name=dataSnapshot.child(uid).child("Info").child("FirstName").getValue(String.class);
-                String User_last_name=dataSnapshot.child(uid).child("Info").child("LastName").getValue(String.class);
-                String User_email=dataSnapshot.child(uid).child("Info").child("Email").getValue(String.class);
-                String User_occupation=dataSnapshot.child(uid).child("Info").child("Occupation").getValue(String.class);
+                 User_first_name=dataSnapshot.child(uid).child("Info").child("FirstName").getValue(String.class);
+                 User_last_name=dataSnapshot.child(uid).child("Info").child("LastName").getValue(String.class);
+                 User_email=dataSnapshot.child(uid).child("Info").child("Email").getValue(String.class);
+                 User_occupation=dataSnapshot.child(uid).child("Info").child("Occupation").getValue(String.class);
 
                 Image_first_name.setText(User_first_name);
                 First_name.setText(User_first_name);
@@ -55,13 +61,24 @@ ProgressDialog dialog;
                 {
                     dialog.dismiss();
                 }
-
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
+
+        Edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent edit = new Intent(ProfileActivity.this,EditProfile.class);
+                edit.putExtra("First_Name",User_first_name);
+                edit.putExtra("Last_Name",User_last_name);
+                edit.putExtra("Email",User_email);
+                edit.putExtra("Occupation",User_occupation);
+                startActivity(edit);
+            }
+        });
+
     }
 }
