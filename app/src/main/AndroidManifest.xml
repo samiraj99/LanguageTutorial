@@ -21,9 +21,12 @@
         <activity android:name=".Login" />
         <activity android:name=".Registration" />
         <activity android:name=".Home" />
-        <activity android:name=".ProfileActivity"
-            android:label="Profile"
-            />
+        <activity
+            android:name=".ProfileActivity"
+            android:label="Profile" />
+        <activity android:name=".EditProfile"
+            android:label="Edit Profile"
+            ></activity>
     </application>
 
 </manifest>
