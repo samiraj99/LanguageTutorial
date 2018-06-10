@@ -33,6 +33,8 @@
     <string name="profile_details">PROFILE DETAILS</string>
     <string name="advance_progress">ADVANCE PROGRESS</string>
     <string name="update">Update</string>
+    <string name="edit">EDIT</string>
+    <string name="done">DONE</string>
 
 
 </resources>
