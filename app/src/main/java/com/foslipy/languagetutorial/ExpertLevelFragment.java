@@ -8,15 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class ExpertExamples extends Fragment {
-
+public class ExpertLevelFragment extends Fragment {
     View view;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_expert_examples, container, false);
+        view = inflater.inflate(R.layout.expert_fragment_layout, container, false);
         return view;
     }
-
 }

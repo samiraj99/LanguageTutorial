@@ -11,11 +11,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class header extends Fragment {
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+public class HeaderFragment extends Fragment {
 
     View view;
-    ImageView profilePic;
-    TextView profileName;
 
     @Nullable
     @Override
@@ -24,4 +30,5 @@ public class header extends Fragment {
 
         return view;
     }
+
 }

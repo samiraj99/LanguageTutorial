@@ -24,9 +24,9 @@
         <activity
             android:name=".ProfileActivity"
             android:label="Profile" />
-        <activity android:name=".EditProfile"
-            android:label="Edit Profile"
-            ></activity>
+        <activity
+            android:name=".EditProfile"
+            android:label="Edit Profile" />
     </application>
 
 </manifest>

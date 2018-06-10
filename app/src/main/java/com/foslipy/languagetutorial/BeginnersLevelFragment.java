@@ -8,15 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class AdvancedTests extends Fragment {
-
+public class BeginnersLevelFragment extends Fragment {
     View view;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_advanced_chapters, container, false);
+        view = inflater.inflate(R.layout.beginners_fragment_layout, container, false);
         return view;
-    }
 
+    }
 }
