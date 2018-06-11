@@ -17,7 +17,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     private DrawerLayout homedrawerlayout;
     private ActionBarDrawerToggle homedrawertoggle;
     FirebaseAuth firebaseAuth;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,11 +32,11 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         navigationView.setNavigationItemSelectedListener(this);
 
 
-        getSupportFragmentManager().beginTransaction().add(R.id.fragmest_container_frame_layout, new HomeFragment()).commit();
+
+        getSupportFragmentManager().beginTransaction().add(R.id.fragmest_container_frame_layout,new home_fragment()).commit();
         navigationView.setCheckedItem(R.id.home_menu);
 
-        firebaseAuth = FirebaseAuth.getInstance();
-
+        firebaseAuth=FirebaseAuth.getInstance();
     }
 
 
@@ -53,33 +52,31 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-        switch (item.getItemId()) {
-
+        switch (item.getItemId()){
             case R.id.home_menu:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout, new HomeFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout,new home_fragment()).commit();
                 break;
             case R.id.BeginnersLevel_menu:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout, new BeginnersLevelFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout,new beginners_fragment()).commit();
                 break;
             case R.id.AdvancedLevel_menu:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout, new AdvancedLevelFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout,new advanced_fragment()).commit();
                 break;
             case R.id.ExpertLevel_menu:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout, new ExpertLevelFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout,new expert_fragment()).commit();
                 break;
             case R.id.Ranking_menu:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout, new RankingFagment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout,new ranking_fragment()).commit();
                 break;
             case R.id.Logout_menu:
-                firebaseAuth.signOut();
-                finish();
-                Intent log = new Intent(Home.this, Login.class);
+               firebaseAuth.signOut();
+               finish();
+                Intent log=new Intent(Home.this,Login.class);
                 startActivity(log);
                 break;
-        };
+            }
 
         homedrawerlayout.closeDrawer(GravityCompat.START);
         return true;
     }
-
 }

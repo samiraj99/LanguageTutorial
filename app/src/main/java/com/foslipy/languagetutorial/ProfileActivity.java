@@ -7,7 +7,6 @@ import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -83,6 +82,14 @@ String User_first_name,User_last_name,User_email,User_occupation;
                 Occupation.setEnabled(true);
                 Btn_Done.setVisibility(View.VISIBLE);
                 Btn_Edit.setVisibility(View.INVISIBLE);
+
+                First_name.setFocusable(true);
+                First_name.setFocusableInTouchMode(true);
+                Last_name.setFocusable(true);
+                Last_name.setFocusableInTouchMode(true);
+                Occupation.setFocusable(true);
+                Occupation.setFocusableInTouchMode(true);
+
             }
         });
 
@@ -93,6 +100,7 @@ String User_first_name,User_last_name,User_email,User_occupation;
                 User_first_name=First_name.getText().toString();
                 User_last_name=Last_name.getText().toString();
                 User_occupation=Occupation.getText().toString();
+
 
                 if(TextUtils.isEmpty(User_first_name))
                 {
