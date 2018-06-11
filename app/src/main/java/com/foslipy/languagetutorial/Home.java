@@ -9,19 +9,33 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout homedrawerlayout;
     private ActionBarDrawerToggle homedrawertoggle;
     FirebaseAuth firebaseAuth;
+    LinearLayout Header;
+    TextView ProfileName;
+    DatabaseReference databaseReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+
+        databaseReference= FirebaseDatabase.getInstance().getReference();
         homedrawerlayout = findViewById(R.id.drawerLayout);
         homedrawertoggle = new ActionBarDrawerToggle(this, homedrawerlayout, R.string.open, R.string.close);
         homedrawerlayout.addDrawerListener(homedrawertoggle);
@@ -31,12 +45,36 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         NavigationView navigationView = findViewById(R.id.home_navigation);
         navigationView.setNavigationItemSelectedListener(this);
 
+        View header=navigationView.getHeaderView(0);
+        ProfileName=header.findViewById(R.id.profile_name);
+        Header=header.findViewById(R.id.header);
+        Header.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OpenProfileActivity();
+            }
+        });
 
 
         getSupportFragmentManager().beginTransaction().add(R.id.fragmest_container_frame_layout,new home_fragment()).commit();
         navigationView.setCheckedItem(R.id.home_menu);
 
         firebaseAuth=FirebaseAuth.getInstance();
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                String User_first_name= dataSnapshot.child(firebaseAuth.getUid()).child("Info").child("FirstName").getValue(String.class);
+                ProfileName.setText(User_first_name);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
 
@@ -79,4 +117,12 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         homedrawerlayout.closeDrawer(GravityCompat.START);
         return true;
     }
+
+   void OpenProfileActivity()
+   {
+       Intent prof = new Intent(Home.this,ProfileActivity.class);
+       startActivity(prof);
+
+   }
+
 }
