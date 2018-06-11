@@ -8,15 +8,21 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Layout;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+
+import org.w3c.dom.Text;
 
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout homedrawerlayout;
     private ActionBarDrawerToggle homedrawertoggle;
     FirebaseAuth firebaseAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,15 +34,22 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         homedrawertoggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        NavigationView navigationView = findViewById(R.id.home_navigation);
+       final NavigationView navigationView = findViewById(R.id.home_navigation);
         navigationView.setNavigationItemSelectedListener(this);
 
+        View header = navigationView.getHeaderView(0);
+        header.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                        Intent profile = new Intent(getApplicationContext(),ProfileActivity.class);
+                        startActivity(profile);
+                    }
+                });
 
-
-        getSupportFragmentManager().beginTransaction().add(R.id.fragmest_container_frame_layout,new HomeFragment()).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragmest_container_frame_layout, new HomeFragment()).commit();
         navigationView.setCheckedItem(R.id.home_menu);
 
-        firebaseAuth=FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
     }
 
 
@@ -52,29 +65,29 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.home_menu:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout,new HomeFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout, new HomeFragment()).commit();
                 break;
             case R.id.BeginnersLevel_menu:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout,new BeginnersLevelFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout, new BeginnersLevelFragment()).commit();
                 break;
             case R.id.AdvancedLevel_menu:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout,new AdvancedLevelFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout, new AdvancedLevelFragment()).commit();
                 break;
             case R.id.ExpertLevel_menu:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout,new ExpertLevelFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout, new ExpertLevelFragment()).commit();
                 break;
             case R.id.Ranking_menu:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout,new ExpertLevelFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout, new ExpertLevelFragment()).commit();
                 break;
             case R.id.Logout_menu:
-               firebaseAuth.signOut();
-               finish();
-                Intent log=new Intent(Home.this,Login.class);
+                firebaseAuth.signOut();
+                finish();
+                Intent log = new Intent(Home.this, Login.class);
                 startActivity(log);
                 break;
-            }
+        }
 
         homedrawerlayout.closeDrawer(GravityCompat.START);
         return true;
