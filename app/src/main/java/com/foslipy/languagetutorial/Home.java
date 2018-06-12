@@ -30,6 +30,9 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     FirebaseAuth firebaseAuth;
 
 
+    FirebaseUser user;
+    String uid, User_first_name;
+    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,28 +45,37 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         homedrawertoggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-       final NavigationView navigationView = findViewById(R.id.home_navigation);
+        final NavigationView navigationView = findViewById(R.id.home_navigation);
         navigationView.setNavigationItemSelectedListener(this);
 
 
-
         View header = navigationView.getHeaderView(0);
-        final TextView profileName=header.findViewById(R.id.profile_name);
+        final TextView profileName = header.findViewById(R.id.profile_name);
 
         header.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                        Intent profile = new Intent(getApplicationContext(),ProfileActivity.class);
-                        startActivity(profile);
-                    }
-                });
+                Intent profile = new Intent(getApplicationContext(), ProfileActivity.class);
+                startActivity(profile);
+            }
+        });
 
 
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        uid = user.getUid();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                User_first_name = dataSnapshot.child(uid).child("Info").child("FirstName").getValue(String.class);
+                profileName.setText(User_first_name);
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-
-
-
+            }
+        });
 
 
         getSupportFragmentManager().beginTransaction().add(R.id.fragmest_container_frame_layout, new HomeFragment()).commit();
@@ -71,7 +83,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
         firebaseAuth = FirebaseAuth.getInstance();
     }
-
 
 
     @Override
