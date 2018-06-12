@@ -14,6 +14,12 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
@@ -22,6 +28,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     private DrawerLayout homedrawerlayout;
     private ActionBarDrawerToggle homedrawertoggle;
     FirebaseAuth firebaseAuth;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +45,11 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
        final NavigationView navigationView = findViewById(R.id.home_navigation);
         navigationView.setNavigationItemSelectedListener(this);
 
+
+
         View header = navigationView.getHeaderView(0);
+        final TextView profileName=header.findViewById(R.id.profile_name);
+
         header.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,11 +58,20 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                     }
                 });
 
+
+
+
+
+
+
+
+
         getSupportFragmentManager().beginTransaction().add(R.id.fragmest_container_frame_layout, new HomeFragment()).commit();
         navigationView.setCheckedItem(R.id.home_menu);
 
         firebaseAuth = FirebaseAuth.getInstance();
     }
+
 
 
     @Override
@@ -79,7 +100,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout, new ExpertLevelFragment()).commit();
                 break;
             case R.id.Ranking_menu:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout, new ExpertLevelFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout, new RankingFagment()).commit();
                 break;
             case R.id.Logout_menu:
                 firebaseAuth.signOut();

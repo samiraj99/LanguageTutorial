@@ -26,7 +26,7 @@ public class HomeFragment extends Fragment {
         viewProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent profile = new Intent(getActivity(), ProfileActivity.class);
+                Intent profile = new Intent(getActivity(), Splash.class);
                 startActivity(profile);
             }
         });
