@@ -11,7 +11,7 @@
     android:padding="10dp"
     >
     <TextView
-        android:id="@+id/ChapterName"
+        android:id="@+id/SectionName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text=""
@@ -23,8 +23,8 @@
         android:background="#82c7f2"
         />
     <TextView
-        android:id="@+id/ChapterData"
-        android:layout_below="@+id/ChapterName"
+        android:id="@+id/SectionData"
+        android:layout_below="@+id/SectionName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"

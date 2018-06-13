@@ -17,6 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Map;
 
 public class SectionList extends AppCompatActivity {
@@ -24,6 +25,7 @@ public class SectionList extends AppCompatActivity {
     ListView list;
     ArrayList<String> SectionNames=new ArrayList<>();
     String Level,Chapter_no;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +34,7 @@ public class SectionList extends AppCompatActivity {
         Level=getIntent().getExtras().getString("Level");
         Chapter_no=getIntent().getExtras().getString("Chapter_no");
 
-        DatabaseReference ref= FirebaseDatabase.getInstance().getReference().child("Languages").child("Java").child(Level).child(Chapter_no);
+        DatabaseReference ref= FirebaseDatabase.getInstance().getReference().child("Languages").child("Java").child(Level).child(Chapter_no).child("Sections");
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -46,15 +48,16 @@ public class SectionList extends AppCompatActivity {
             }
         });
 
-        ArrayAdapter<String> adapter= new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, SectionNames);
+        ArrayAdapter<String> adapter= new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,SectionNames);
         list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent ChData = new Intent(SectionList.this,ChaptersData.class);
+                int no=i+1;
                 ChData.putExtra("Level",Level);
                 ChData.putExtra("Chapter_no",Chapter_no);
-                ChData.putExtra("Section_no","Section"+i+1);
+                ChData.putExtra("Section_no","Section"+no);
                 startActivity(ChData);
             }
         });
