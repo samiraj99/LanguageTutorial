@@ -30,7 +30,7 @@
             android:rowCount="8">
 
             <android.support.v7.widget.CardView
-                android:id="@+id/chapter_1"
+                android:id="@+id/CardView_Beginners_chapter_1"
                 android:layout_width="0dp"
                 android:layout_height="175dp"
                 android:layout_columnWeight="1"
@@ -62,7 +62,7 @@
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
-                android:id="@+id/chapter_2"
+                android:id="@+id/CardView_Beginners_chapter_2"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_columnWeight="1"
@@ -94,7 +94,7 @@
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
-                android:id="@+id/chapter_3"
+                android:id="@+id/CardView_Beginners_chapter_3"
                 android:layout_width="0dp"
                 android:layout_height="175dp"
                 android:layout_columnWeight="1"
@@ -126,7 +126,7 @@
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
-                android:id="@+id/chapter_4"
+                android:id="@+id/CardView_Beginners_chapter_4"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_columnWeight="1"
@@ -159,7 +159,7 @@
 
 
             <android.support.v7.widget.CardView
-                android:id="@+id/chapter_5"
+                android:id="@+id/CardView_Beginners_chapter_5"
                 android:layout_width="0dp"
                 android:layout_height="175dp"
                 android:layout_columnWeight="1"
@@ -191,7 +191,7 @@
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
-                android:id="@+id/chapter_6"
+                android:id="@+id/CardView_Beginners_chapter_6"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_columnWeight="1"
@@ -223,7 +223,7 @@
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
-                android:id="@+id/chapter_7"
+                android:id="@+id/CardView_Beginners_chapter_7"
                 android:layout_width="0dp"
                 android:layout_height="175dp"
                 android:layout_columnWeight="1"
@@ -255,7 +255,7 @@
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
-                android:id="@+id/chapter_8"
+                android:id="@+id/CardView_Beginners_chapter_8"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_columnWeight="1"
@@ -285,7 +285,7 @@
 
 
             <android.support.v7.widget.CardView
-                android:id="@+id/chapter_9"
+                android:id="@+id/CardView_Beginners_chapter_9"
                 android:layout_width="0dp"
                 android:layout_height="175dp"
                 android:layout_columnWeight="1"
@@ -317,7 +317,7 @@
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
-                android:id="@+id/chapter_10"
+                android:id="@+id/CardView_Beginners_chapter_10"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_columnWeight="1"
