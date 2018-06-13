@@ -24,6 +24,8 @@
         <activity
             android:name=".ProfileActivity"
             android:label="Profile" />
+        <activity android:name=".ChaptersData" />
+        <activity android:name=".SectionList"></activity>
     </application>
 
 </manifest>
