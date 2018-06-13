@@ -71,13 +71,9 @@ public class Registration extends AppCompatActivity {
                         if(task.isSuccessful())
                         {
                             Regist();
-                           // Toast.makeText(Registration.this, "Success", Toast.LENGTH_SHORT).show();
-                           // dialog.dismiss();
-                            //finish();
+
                         }else {
-                            //Toast.makeText(Registration.this, "Failed", Toast.LENGTH_SHORT).show();
-                            //dialog.dismiss();
-                        }
+                          }
 
                     }
                 });
@@ -90,7 +86,7 @@ public class Registration extends AppCompatActivity {
     void Regist()
     {
         RegistrationData data=new RegistrationData(St_FirstName,St_LastName,St_Occupation,St_Email);
-        databaseReference.child(firebaseAuth.getUid()).child("Info").setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
+        databaseReference.child("Users").child(firebaseAuth.getUid()).child("Info").setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful())

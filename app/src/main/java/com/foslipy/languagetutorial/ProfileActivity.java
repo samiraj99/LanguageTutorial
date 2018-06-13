@@ -52,10 +52,10 @@ String User_first_name,User_last_name,User_email,User_occupation;
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                 User_first_name=dataSnapshot.child(uid).child("Info").child("FirstName").getValue(String.class);
-                 User_last_name=dataSnapshot.child(uid).child("Info").child("LastName").getValue(String.class);
-                 User_email=dataSnapshot.child(uid).child("Info").child("Email").getValue(String.class);
-                 User_occupation=dataSnapshot.child(uid).child("Info").child("Occupation").getValue(String.class);
+                 User_first_name=dataSnapshot.child("Users").child(uid).child("Info").child("FirstName").getValue(String.class);
+                 User_last_name=dataSnapshot.child("Users").child(uid).child("Info").child("LastName").getValue(String.class);
+                 User_email=dataSnapshot.child("Users").child(uid).child("Info").child("Email").getValue(String.class);
+                 User_occupation=dataSnapshot.child("Users").child(uid).child("Info").child("Occupation").getValue(String.class);
 
                 Image_first_name.setText(User_first_name);
                 First_name.setText(User_first_name);
@@ -113,7 +113,7 @@ String User_first_name,User_last_name,User_email,User_occupation;
                     Last_name.setError("Fields can't be Empty");
                 }else {
                     RegistrationData data = new RegistrationData(User_first_name, User_last_name, User_occupation, User_email);
-                    databaseReference.child(uid).child("Info").setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    databaseReference.child("Users").child(uid).child("Info").setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
 

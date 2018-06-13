@@ -67,7 +67,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                User_first_name = dataSnapshot.child(uid).child("Info").child("FirstName").getValue(String.class);
+                User_first_name = dataSnapshot.child("Users").child(uid).child("Info").child("FirstName").getValue(String.class);
                 profileName.setText(User_first_name);
             }
 
