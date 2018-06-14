@@ -32,5 +32,27 @@
         android:textSize="18sp"
         android:layout_marginTop="10dp"
         />
+    <TextView
+        android:id="@+id/text_view_example"
+        android:layout_below="@+id/SectionData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="@string/example"
+        android:textColor="#000"
+        />
+    <TextView
+        android:id="@+id/SectionExample"
+        android:layout_below="@+id/text_view_example"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textSize="18sp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rectanglshape"
+        android:textColor="#ade739"
+        />
 </RelativeLayout>
 </ScrollView>
