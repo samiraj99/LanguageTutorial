@@ -8,11 +8,9 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Layout;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -21,7 +19,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
 
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -67,7 +64,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                User_first_name = dataSnapshot.child(uid).child("Info").child("FirstName").getValue(String.class);
+                User_first_name = dataSnapshot.child("Users").child(uid).child("Info").child("FirstName").getValue(String.class);
                 profileName.setText(User_first_name);
             }
 

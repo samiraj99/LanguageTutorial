@@ -6,7 +6,6 @@
     android:orientation="vertical">
 
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,7 +18,7 @@
             android:text="Expert Level"
             android:textAlignment="center"
             android:textSize="30sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <GridLayout
             android:id="@+id/beginners_grid"
@@ -30,7 +29,7 @@
             android:rowCount="8">
 
             <android.support.v7.widget.CardView
-                android:id="@+id/chapter_1"
+                android:id="@+id/CardView_Expert_chapter_1"
                 android:layout_width="0dp"
                 android:layout_height="175dp"
                 android:layout_columnWeight="1"
@@ -57,12 +56,12 @@
                     android:layout_gravity="center|bottom"
                     android:text="Chapter 1"
                     android:textSize="30sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
-                android:id="@+id/chapter_2"
+                android:id="@+id/CardView_Expert_chapter_2"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_columnWeight="1"
@@ -89,12 +88,12 @@
                     android:layout_gravity="center|bottom"
                     android:text="Chapter 2"
                     android:textSize="30sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
-                android:id="@+id/chapter_3"
+                android:id="@+id/CardView_Expert_chapter_3"
                 android:layout_width="0dp"
                 android:layout_height="175dp"
                 android:layout_columnWeight="1"
@@ -121,12 +120,12 @@
                     android:layout_gravity="center|bottom"
                     android:text="Chapter 3"
                     android:textSize="30sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
-                android:id="@+id/chapter_4"
+                android:id="@+id/CardView_Expert_chapter_4"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_columnWeight="1"
@@ -153,13 +152,13 @@
                     android:layout_gravity="center|bottom"
                     android:text="Chapter 4"
                     android:textSize="30sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
             </android.support.v7.widget.CardView>
 
 
             <android.support.v7.widget.CardView
-                android:id="@+id/chapter_5"
+                android:id="@+id/CardView_Expert_chapter_5"
                 android:layout_width="0dp"
                 android:layout_height="175dp"
                 android:layout_columnWeight="1"
@@ -186,12 +185,12 @@
                     android:layout_gravity="center|bottom"
                     android:text="Chapter 5"
                     android:textSize="30sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
-                android:id="@+id/chapter_6"
+                android:id="@+id/CardView_Expert_chapter_6"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_columnWeight="1"
@@ -218,12 +217,12 @@
                     android:layout_gravity="center|bottom"
                     android:text="Chapter 6"
                     android:textSize="30sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
-                android:id="@+id/chapter_7"
+                android:id="@+id/CardView_Expert_chapter_7"
                 android:layout_width="0dp"
                 android:layout_height="175dp"
                 android:layout_columnWeight="1"
@@ -250,12 +249,12 @@
                     android:layout_gravity="center|bottom"
                     android:text="Chapter 7"
                     android:textSize="30sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
-                android:id="@+id/chapter_8"
+                android:id="@+id/CardView_Expert_chapter_8"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_columnWeight="1"
@@ -279,13 +278,13 @@
                     android:layout_gravity="center|bottom"
                     android:text="Chapter 8"
                     android:textSize="30sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
             </android.support.v7.widget.CardView>
 
 
             <android.support.v7.widget.CardView
-                android:id="@+id/chapter_9"
+                android:id="@+id/CardView_Expert_chapter_9"
                 android:layout_width="0dp"
                 android:layout_height="175dp"
                 android:layout_columnWeight="1"
@@ -312,12 +311,12 @@
                     android:layout_gravity="center|bottom"
                     android:text="Chapter 9"
                     android:textSize="30sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
-                android:id="@+id/chapter_10"
+                android:id="@+id/CardView_Expert_chapter_10"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_columnWeight="1"
@@ -344,69 +343,7 @@
                     android:layout_gravity="center|bottom"
                     android:text="Chapter 10"
                     android:textSize="30sp"
-                    android:textStyle="bold"/>
-
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/chapter_11"
-                android:layout_width="0dp"
-                android:layout_height="175dp"
-                android:layout_columnWeight="1"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_rowWeight="1"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="10dp">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="130dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/books5" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center|bottom"
-                    android:text="Chapter 11"
-                    android:textSize="30sp" />
-
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/chapter_12"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_columnWeight="1"
-                android:layout_marginBottom="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_rowWeight="1"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="10dp">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="130dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/many_books" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center|bottom"
-                    android:text="Chapter 12"
-                    android:textSize="30sp" />
+                    android:textStyle="bold" />
 
             </android.support.v7.widget.CardView>
 

@@ -31,6 +31,7 @@
         android:textColor="#a065f7"
         android:textSize="18sp"
         android:layout_marginTop="10dp"
+        android:text=""
         />
     <TextView
         android:id="@+id/text_view_example"

@@ -53,6 +53,7 @@
                     android:src="@drawable/open_book1" />
 
                 <TextView
+                    android:id="@+id/chapter1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|bottom"
@@ -117,6 +118,7 @@
                     android:src="@drawable/books2" />
 
                 <TextView
+                    android:id="@+id/chapter2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|bottom"

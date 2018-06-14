@@ -32,6 +32,9 @@ public class ChaptersData extends AppCompatActivity {
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
+
+
+
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
               String section_name=  dataSnapshot.child("Languages").child("Java").child(Level).child(Chapter_no).child("Sections").child(Section_no).child("SectionName").getValue(String.class);
               String section_data=  dataSnapshot.child("Languages").child("Java").child(Level).child(Chapter_no).child("Sections").child(Section_no).child("SectionData").getValue(String.class);
