@@ -57,7 +57,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|bottom"
-                    android:text="Chapter 1"
+                    android:text=""
                     android:textSize="30sp"
                     android:textStyle="bold"/>
 
@@ -86,6 +86,7 @@
                     android:src="@drawable/book1" />
 
                 <TextView
+                    android:id="@+id/chapter2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|bottom"
@@ -118,7 +119,7 @@
                     android:src="@drawable/books2" />
 
                 <TextView
-                    android:id="@+id/chapter2"
+                    android:id="@+id/chapter3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|bottom"
@@ -151,6 +152,7 @@
                     android:src="@drawable/books3" />
 
                 <TextView
+                    android:id="@+id/chapter4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|bottom"

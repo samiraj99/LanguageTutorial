@@ -5,55 +5,55 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.foslipy.languagetutorial.ChaptersData">
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="10dp"
-    >
-    <TextView
-        android:id="@+id/SectionName"
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=""
-        android:textColor="@android:color/black"
-        android:textStyle="bold"
-        android:textSize="30sp"
-        android:padding="5dp"
-        android:textAlignment="center"
-        android:background="#82c7f2"
-        />
-    <TextView
-        android:id="@+id/SectionData"
-        android:layout_below="@+id/SectionName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:textColor="#a065f7"
-        android:textSize="18sp"
-        android:layout_marginTop="10dp"
-        android:text=""
-        />
-    <TextView
-        android:id="@+id/text_view_example"
-        android:layout_below="@+id/SectionData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:text="@string/example"
-        android:textColor="#000"
-        />
-    <TextView
-        android:id="@+id/SectionExample"
-        android:layout_below="@+id/text_view_example"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:textSize="18sp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rectanglshape"
-        android:textColor="#ade739"
-        />
-</RelativeLayout>
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/SectionName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#82c7f2"
+            android:padding="5dp"
+            android:text=""
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/SectionData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/SectionName"
+            android:layout_marginTop="10dp"
+            android:padding="5dp"
+            android:text=""
+            android:textColor="#a065f7"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/text_view_example"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/SectionData"
+            android:padding="5dp"
+            android:text="@string/example"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/SectionExample"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_view_example"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rectanglshape"
+            android:padding="5dp"
+            android:textColor="#ade739"
+            android:textSize="18sp" />
+    </RelativeLayout>
 </ScrollView>

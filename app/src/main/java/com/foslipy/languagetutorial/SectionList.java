@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,7 +22,7 @@ public class SectionList extends AppCompatActivity {
 
     ListView list;
     ArrayList<String> SectionNames=new ArrayList<>();
-    String Level,Chapter_no;
+    String Level,Chapter_no,chapter_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,11 @@ public class SectionList extends AppCompatActivity {
         list=findViewById(R.id.List_view);
         Level=getIntent().getExtras().getString("Level");
         Chapter_no=getIntent().getExtras().getString("Chapter_no");
+        chapter_name=getIntent().getExtras().getString("chapter_name");
+
+        TextView pageTitle=findViewById(R.id.pageTitle);
+        pageTitle.setText(chapter_name);
+
 
         DatabaseReference ref= FirebaseDatabase.getInstance().getReference().child("Languages").child("Java").child(Level).child(Chapter_no).child("Sections");
         ref.addValueEventListener(new ValueEventListener() {
@@ -60,6 +66,7 @@ public class SectionList extends AppCompatActivity {
                 int no=i+1;
                 ChData.putExtra("Level",Level);
                 ChData.putExtra("Chapter_no",Chapter_no);
+                ChData.putExtra("chapter_name",chapter_name);
                 ChData.putExtra("Section_no","Section"+no);
                 startActivity(ChData);
             }
