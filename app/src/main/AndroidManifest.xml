@@ -25,7 +25,10 @@
             android:name=".ProfileActivity"
             android:label="Profile" />
         <activity android:name=".ChaptersData" />
-        <activity android:name=".SectionList"></activity>
+        <activity android:name=".SectionList" />
+        <activity android:name=".QuizList" />
+        <activity android:name=".QuizActivity" />
+        <activity android:name=".QuizResult"></activity>
     </application>
 
 </manifest>

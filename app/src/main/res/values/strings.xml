@@ -36,6 +36,8 @@
     <string name="edit">EDIT</string>
     <string name="done">DONE</string>
     <string name="example">Example</string>
+    <string name="next">Next</string>
+    <string name="result">RESULT</string>
 
 
 </resources>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.foslipy.languagetutorial.QuizResult"
+    android:background="@drawable/rectanglshape"
+   android:layout_marginTop="100dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    >
+
+    <TextView
+        android:id="@+id/text_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/result"
+        android:textSize="50sp"
+        android:layout_centerHorizontal="true"
+        android:textColor="#000"
+       android:layout_marginTop="10dp"
+        />
+    <TextView
+        android:layout_below="@+id/text_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="40dp"
+        android:text="Your score is "
+        android:textSize="40sp"
+        android:textColor="#000"
+        />
+    <TextView
+        android:id="@+id/Correct_ans"
+        android:layout_below="@+id/text_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:textSize="40sp"
+        android:text=""
+        android:textColor="#f40505"
+        android:layout_marginStart="280dp"
+        />
+    <TextView
+        android:layout_below="@+id/text_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="110dp"
+        android:layout_marginStart="40dp"
+        android:text="Out of"
+        android:textSize="40sp"
+        android:textColor="#000"
+        />
+    <TextView
+        android:id="@+id/Total_que"
+        android:layout_below="@+id/Correct_ans"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7sp"
+        android:textSize="40sp"
+        android:text=""
+        android:textColor="#ec0e0e"
+        android:layout_marginStart="160dp"
+        android:layout_marginBottom="20dp"
+        />
+
+</RelativeLayout>

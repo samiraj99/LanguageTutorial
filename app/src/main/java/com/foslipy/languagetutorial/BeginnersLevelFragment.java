@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
@@ -23,7 +24,7 @@ public class BeginnersLevelFragment extends Fragment {
     DatabaseReference db;
     TextView chapter1name, chapter2name, chapter3name, chapter4name;
     String Level = "Beginners";
-
+    FloatingActionButton fab_button_quiz;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -170,6 +171,16 @@ public class BeginnersLevelFragment extends Fragment {
                 startActivity(SecList);
             }
         });
+
+            fab_button_quiz=view.findViewById(R.id.Float_button_quiz);
+            fab_button_quiz.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent quizlist=new Intent(getActivity(),QuizList.class);
+                    quizlist.putExtra("Level",Level);
+                    startActivity(quizlist);
+                }
+            });
 
         return view;
     }
