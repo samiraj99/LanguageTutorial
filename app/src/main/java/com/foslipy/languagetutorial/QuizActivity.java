@@ -12,6 +12,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,12 +37,16 @@ public class QuizActivity extends AppCompatActivity {
     RadioButton radioButton;
     RadioButton Radio_btn_Option1,Radio_btn_Option2,Radio_btn_Option3,Radio_btn_Option4;
     Button Next;
-    int Limit=0,Marks=0;
+    int Limit=0,Marks=0,QuizNo;
+    DatabaseReference databaseReference;
+    FirebaseAuth firebaseAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
+        databaseReference=FirebaseDatabase.getInstance().getReference();
+        firebaseAuth=FirebaseAuth.getInstance();
         QuestionName=findViewById(R.id.QuestionName);
         Radio_btn_Option1=findViewById(R.id.Radio_button_Option1);
         Radio_btn_Option2=findViewById(R.id.Radio_button_Option2);
@@ -50,6 +55,7 @@ public class QuizActivity extends AppCompatActivity {
         Next=findViewById(R.id.Button_next);
         Level=getIntent().getExtras().getString("Level");
         Chapter_No=getIntent().getExtras().getString("ChapterNo");
+        QuizNo=getIntent().getExtras().getInt("QuizNo");
         radioGroup=findViewById(R.id.Radio_group);
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Languages").child("Java").child(Level).child(Chapter_No).child("Quiz");
@@ -97,6 +103,7 @@ public class QuizActivity extends AppCompatActivity {
               }
               else
               {
+                  databaseReference.child("Users").child(firebaseAuth.getUid()).child("Progress").child(Level).child("Quizzes").child("Quiz"+QuizNo).setValue("IsCompleted");
                   Intent result = new Intent(QuizActivity.this,QuizResult.class);
                   result.putExtra("TotalQuestions",Limit);
                   result.putExtra("CorrectAns",Marks);

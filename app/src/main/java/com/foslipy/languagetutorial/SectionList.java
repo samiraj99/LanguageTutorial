@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -43,7 +42,7 @@ public class SectionList extends AppCompatActivity {
 
         cd = new ConnectionDetector(this);
 
-        if (cd.isConnected()) {
+        if(cd.isConnected()) {
 
             DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Languages").child("Java").child(Level).child(Chapter_no).child("Sections");
             ref.addValueEventListener(new ValueEventListener() {
@@ -65,26 +64,29 @@ public class SectionList extends AppCompatActivity {
                 }
             });
 
-            ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, SectionNames);
+            ArrayAdapter<String> adapter= new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,SectionNames);
             list.setAdapter(adapter);
             list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    Intent ChData = new Intent(SectionList.this, ChaptersData.class);
-                    int no = i + 1;
-                    ChData.putExtra("Level", Level);
-                    ChData.putExtra("Chapter_no", Chapter_no);
-                    ChData.putExtra("chapter_name", Chapter_name);
-                    ChData.putExtra("Section_no", "Section" + no);
+                    Intent ChData = new Intent(SectionList.this,ChaptersData.class);
+                    int no=i+1;
+                    ChData.putExtra("Level",Level);
+                    ChData.putExtra("Chapter_no",Chapter_no);
+                    ChData.putExtra("chapter_name",Chapter_name);
+                    ChData.putExtra("Section_no","Section"+no);
+                    ChData.putExtra("No",no);
+                    ChData.putExtra("Limit",SectionNames.size());
                     startActivity(ChData);
                 }
             });
 
         }
-        if (!cd.isConnected()) {
+        if(!cd.isConnected()){
+            Toast.makeText(this,"Your are Offline",Toast.LENGTH_LONG).show();
             ArrayList<String> SectionNames2 = new ArrayList<>();
             offlineDB = new DatabaseHelper(this);
-            Cursor sectnames = offlineDB.getSectioNames(Level, Chapter_name);
+            Cursor sectnames = offlineDB.getSectioNames(Level,Chapter_name);
             if (sectnames.moveToFirst()) {
                 do {
                     String sect;
@@ -92,31 +94,9 @@ public class SectionList extends AppCompatActivity {
                     SectionNames2.add(sect);
                 } while (sectnames.moveToNext());
 
-            } else {
-                ShowwMessage("No Data Found","Please conect to the Internet");
             }
-            ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, SectionNames2);
-            list.setAdapter(adapter2);
-            list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    Intent ChData = new Intent(SectionList.this, ChaptersData.class);
-                    int no = i + 1;
-                    ChData.putExtra("Level", Level);
-                    ChData.putExtra("Chapter_no", Chapter_no);
-                    ChData.putExtra("chapter_name", Chapter_name);
-                    ChData.putExtra("Section_no", "Section" + no);
-                    startActivity(ChData);
-                }
-            });
         }
 
-    }
-    public void ShowwMessage(String title, String message) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setCancelable(true);
-        builder.setTitle(title);
-        builder.setMessage(message);
-        builder.show();
+
     }
 }

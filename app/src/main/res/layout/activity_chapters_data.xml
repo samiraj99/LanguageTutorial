@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.foslipy.languagetutorial.ChaptersData">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="10dp">
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        >
 
         <TextView
             android:id="@+id/SectionName"
@@ -56,9 +55,36 @@
             android:padding="5dp"
             android:textColor="#ade739"
             android:textSize="18sp" />
-
-    </LinearLayout>
-
-
-
+        <Button
+            android:id="@+id/Button_previous"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/SectionExample"
+            android:background="@drawable/ic_arrow_back_black_24dp"
+            android:layout_marginTop="20dp"
+            android:visibility="visible"
+            />
+        <Button
+            android:id="@+id/Button_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_arrow_forward_black_24dp"
+            android:layout_toEndOf="@+id/Button_previous"
+            android:layout_below="@+id/SectionExample"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="170dp"
+            android:visibility="visible"
+            />
+        <Button
+            android:id="@+id/Button_finish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/SectionExample"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="finish"
+            android:textSize="20sp"
+            android:visibility="invisible"
+            />
+    </RelativeLayout>
 </ScrollView>
