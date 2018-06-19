@@ -1,6 +1,7 @@
 package com.foslipy.languagetutorial;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -18,13 +20,19 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class BeginnersLevelFragment extends Fragment {
     View view;
     CardView CH1, CH2, CH3, CH4, CH5, CH6, CH7, CH8, CH9, CH10;
     DatabaseReference db;
     TextView chapter1name, chapter2name, chapter3name, chapter4name;
     String Level = "Beginners";
-    FloatingActionButton fab_button_quiz;
+    DatabaseHelper offlineDb;
+    ConnectionDetector connection;
+    ArrayList<String> chapNames;
+    ArrayList<String> chapNo;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -46,35 +54,59 @@ public class BeginnersLevelFragment extends Fragment {
         chapter3name = view.findViewById(R.id.chapter3);
         chapter4name = view.findViewById(R.id.chapter4);
 
-        db = FirebaseDatabase.getInstance().getReference();
-        db.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String chapter_name = dataSnapshot.child("Languages").child("Java").child("Beginners").child("Chapter1").child("ChapterName").getValue(String.class);
-                chapter1name.setText(chapter_name);
-                chapter_name = dataSnapshot.child("Languages").child("Java").child("Beginners").child("Chapter2").child("ChapterName").getValue(String.class);
-                chapter2name.setText(chapter_name);
-                chapter_name = dataSnapshot.child("Languages").child("Java").child("Beginners").child("Chapter3").child("ChapterName").getValue(String.class);
-                chapter3name.setText(chapter_name);
-                chapter_name =dataSnapshot.child("Languages").child("Java").child("Beginners").child("Chapter4").child("ChapterName").getValue(String.class);
-                chapter4name.setText(chapter_name);
-            }
+        offlineDb = new DatabaseHelper(getActivity());
+        connection = new ConnectionDetector(getActivity());
+        chapNames = new ArrayList<>();
+        chapNo = new ArrayList<>();
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+        if (connection.isConnected()) {
+            Toast.makeText(getActivity(), "Your are Online", Toast.LENGTH_LONG).show();
+            db = FirebaseDatabase.getInstance().getReference();
+            db.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    String chapter_name = dataSnapshot.child("Languages").child("Java").child("Beginners").child("Chapter1").child("ChapterName").getValue(String.class);
+                    chapter1name.setText(chapter_name);
+                    chapter_name = dataSnapshot.child("Languages").child("Java").child("Beginners").child("Chapter2").child("ChapterName").getValue(String.class);
+                    chapter2name.setText(chapter_name);
+                    chapter_name = dataSnapshot.child("Languages").child("Java").child("Beginners").child("Chapter3").child("ChapterName").getValue(String.class);
+                    chapter3name.setText(chapter_name);
+                    chapter_name = dataSnapshot.child("Languages").child("Java").child("Beginners").child("Chapter4").child("ChapterName").getValue(String.class);
+                    chapter4name.setText(chapter_name);
+                }
 
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+        }
+        if(!connection.isConnected()){
+            Toast.makeText(getActivity(), "Your are Offline", Toast.LENGTH_LONG).show();
+            Cursor chapnames = offlineDb.getChapterNames(Level);
+            if (chapnames.moveToFirst()) {
+                do {
+                    String sect;
+                    String cp;
+                    cp = chapnames.getString(0);
+                    sect = chapnames.getString(1);
+                    chapNames.add(sect);
+                    chapNo.add(cp);
+                } while (chapnames.moveToNext());
+                chapter1name.setText(chapNames.get(0));
             }
-        });
+        }
 
 
         CH1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent SecList = new Intent(getActivity(), SectionList.class);
-                String chname=chapter1name.getText().toString();
+                String chname = chapter1name.getText().toString();
                 SecList.putExtra("Level", Level);
                 SecList.putExtra("Chapter_no", "Chapter1");
-                SecList.putExtra("chapter_name",chname);
+                SecList.putExtra("chapter_name", chname);
                 startActivity(SecList);
             }
         });
@@ -83,10 +115,10 @@ public class BeginnersLevelFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent SecList = new Intent(getActivity(), ChaptersData.class);
-                String chmane=chapter1name.getText().toString();
+                String chname = chapter1name.getText().toString();
                 SecList.putExtra("Level", Level);
                 SecList.putExtra("Chapter_no", "Chapter2");
-                SecList.putExtra("chapter_name",chmane);
+                SecList.putExtra("chapter_name", chname);
                 startActivity(SecList);
             }
         });
@@ -95,10 +127,10 @@ public class BeginnersLevelFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent SecList = new Intent(getActivity(), SectionList.class);
-                String chmane=chapter1name.getText().toString();
+                String chname = chapter1name.getText().toString();
                 SecList.putExtra("Level", Level);
                 SecList.putExtra("Chapter_no", "Chapter1");
-                SecList.putExtra("chapter_name",chmane);
+                SecList.putExtra("chapter_name", chname);
                 startActivity(SecList);
             }
         });
@@ -107,10 +139,10 @@ public class BeginnersLevelFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent SecList = new Intent(getActivity(), SectionList.class);
-                String chmane=chapter1name.getText().toString();
+                String chname = chapter1name.getText().toString();
                 SecList.putExtra("Level", Level);
                 SecList.putExtra("Chapter_no", "Chapter1");
-                SecList.putExtra("chapter_name",chmane);
+                SecList.putExtra("chapter_name", chname);
                 startActivity(SecList);
             }
         });
@@ -172,15 +204,17 @@ public class BeginnersLevelFragment extends Fragment {
             }
         });
 
-            fab_button_quiz=view.findViewById(R.id.Float_button_quiz);
-            fab_button_quiz.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent quizlist=new Intent(getActivity(),QuizList.class);
-                    quizlist.putExtra("Level",Level);
-                    startActivity(quizlist);
-                }
-            });
+        FloatingActionButton fab_button_quiz;
+        fab_button_quiz = view.findViewById(R.id.Float_button_quiz);
+        fab_button_quiz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent quizlist = new Intent(getActivity(), QuizList.class);
+                quizlist.putExtra("Level", Level);
+                startActivity(quizlist);
+            }
+        });
+
 
         return view;
     }
