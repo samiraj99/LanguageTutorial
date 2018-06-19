@@ -62,7 +62,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String[] projections = {column5};
         String selection = column1 + " LIKE ?" + " AND " + column3 + " LIKE ?";
         String[] selection_args = {lvl, chnm};
-        Cursor cr = db.query(Table_Name1, projections, selection, selection_args, null, null, null);
+        String order=column4 + " ASC";
+        Cursor cr = db.query(Table_Name1, projections, selection, selection_args, null, null, order);
         return cr;
     }
 
@@ -85,10 +86,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cr;
     }
 
-    public void deleteExistingRow(String lvl, String chno, String chname, String sectno, String sectname) {
+    public void deleteExistingRow(String lvl, String chno, String sectno) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String selection = column1 +" LIKE ? AND "+ column2 +" LIKE ? AND "+ column3 +" LIKE ? AND "+ column4 +" LIKE ? AND " + column5 + " LIKE ?";
-        String[] selection_args={lvl,chno,chname,sectno,sectname};
+        String selection = column1 +" LIKE ? AND "+ column2 +" LIKE ? AND "+ column4 +" LIKE ?";
+        String[] selection_args={lvl,chno,sectno};
          db.delete(Table_Name1, selection, selection_args);
     }
 

@@ -56,13 +56,12 @@ public class ChaptersData extends AppCompatActivity {
                         text_example.setVisibility(View.INVISIBLE);
                         SectionExample.setVisibility(View.INVISIBLE);
 
-                        Cursor cr1 = offlineDB.checkIfDataExists(Level, Chapter_no, Chapter_name, Section_no,Section_name);
-                        if(cr1.getCount()!=0)
+                        Cursor cr1 = offlineDB.checkIfDataExists(Level,Chapter_no, Chapter_name, Section_no,Section_name);
+                        if(cr1.getCount()==1)
                         {
-                            offlineDB.deleteExistingRow(Level, Chapter_no, Chapter_name, Section_no,Section_name);
+                            offlineDB.deleteExistingRow(Level,Chapter_no,Section_no);
                             Toast.makeText(getApplicationContext(),"Existing data deleted",Toast.LENGTH_LONG).show();
                         }
-
                         offlineDB.putData(Level, Chapter_no, Chapter_name, Section_no, Section_name, Section_data, Section_example);
 
                     }
