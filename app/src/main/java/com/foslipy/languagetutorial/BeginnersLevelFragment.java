@@ -114,7 +114,7 @@ public class BeginnersLevelFragment extends Fragment {
         CH2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent SecList = new Intent(getActivity(), ChaptersData.class);
+                Intent SecList = new Intent(getActivity(), SectionList.class);
                 String chname = chapter2name.getText().toString();
                 SecList.putExtra("Level", Level);
                 SecList.putExtra("Chapter_no", "Chapter2");
