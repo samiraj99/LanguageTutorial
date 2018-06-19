@@ -92,8 +92,6 @@ public class SectionList extends AppCompatActivity {
                     SectionNames2.add(sect);
                 } while (sectnames.moveToNext());
 
-            } else {
-                ShowwMessage("No Data Found","Please conect to the Internet");
             }
             ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, SectionNames2);
             list.setAdapter(adapter2);
@@ -111,12 +109,5 @@ public class SectionList extends AppCompatActivity {
             });
         }
 
-    }
-    public void ShowwMessage(String title, String message) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setCancelable(true);
-        builder.setTitle(title);
-        builder.setMessage(message);
-        builder.show();
     }
 }

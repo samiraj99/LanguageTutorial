@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,13 +24,13 @@ import java.util.ArrayList;
 public class BeginnersLevelFragment extends Fragment {
     View view;
     CardView CH1, CH2, CH3, CH4, CH5, CH6, CH7, CH8, CH9, CH10;
-    DatabaseReference db;
     TextView chapter1name, chapter2name, chapter3name, chapter4name;
     String Level = "Beginners";
     DatabaseHelper offlineDb;
     ConnectionDetector connection;
     ArrayList<String> chapNames;
     ArrayList<String> chapNo;
+    DatabaseReference db;
 
     @Nullable
     @Override
