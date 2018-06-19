@@ -74,7 +74,6 @@ public class ChaptersData extends AppCompatActivity {
             });
         }
         if(!connection.isConnected()){
-
             Cursor cr = offlineDB.getData(Level, Chapter_no, Chapter_name, Section_no);
             if (cr.moveToFirst()) {
                 do {
