@@ -6,12 +6,9 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.view.DragAndDropPermissions;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -59,13 +56,15 @@ public class ChaptersData extends AppCompatActivity {
                         text_example.setVisibility(View.INVISIBLE);
                         SectionExample.setVisibility(View.INVISIBLE);
 
-
-
-                        Cursor cr1 = offlineDB.getData(Level, Chapter_no, Chapter_name, Section_no);
-                        if(cr1.getCount()==0)
+                        Cursor cr1 = offlineDB.checkIfDataExists(Level, Chapter_no, Chapter_name, Section_no,Section_name);
+                        if(cr1.getCount()!=0)
                         {
-                            offlineDB.putData(Level, Chapter_no, Chapter_name, Section_no, Section_name, Section_data, Section_example);
+                            offlineDB.deleteExistingRow(Level, Chapter_no, Chapter_name, Section_no,Section_name);
+                            Toast.makeText(getApplicationContext(),"Existing data deleted",Toast.LENGTH_LONG).show();
                         }
+
+                        offlineDB.putData(Level, Chapter_no, Chapter_name, Section_no, Section_name, Section_data, Section_example);
+
                     }
                 }
 

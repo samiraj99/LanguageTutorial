@@ -43,7 +43,7 @@ public class SectionList extends AppCompatActivity {
         cd = new ConnectionDetector(this);
 
         if(cd.isConnected()) {
-            Toast.makeText(this,"Your are Online",Toast.LENGTH_LONG).show();
+
             DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Languages").child("Java").child(Level).child(Chapter_no).child("Sections");
             ref.addValueEventListener(new ValueEventListener() {
                 @Override

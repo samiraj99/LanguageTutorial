@@ -11,13 +11,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DB_Name = "LanguageTutorials.db";
     public static final int version = 1;
     public static final String Table_Name1 = "content";
-    public static final String column1_1 = "levels";
-    public static final String column2_1 = "chapter_no";
-    public static final String column3_1 = "chapter_name";
-    public static final String column4_1= "section_no";
-    public static final String column5_1 = "section_name";
-    public static final String column6_1 = "section_data";
-    public static final String column7_1 = "section_example";
+    public static final String column1 = "levels";
+    public static final String column2 = "chapter_no";
+    public static final String column3 = "chapter_name";
+    public static final String column4 = "section_no";
+    public static final String column5 = "section_name";
+    public static final String column6 = "section_data";
+    public static final String column7 = "section_example";
 
     public DatabaseHelper(Context context) {
         super(context, DB_Name, null, version);
@@ -30,57 +30,68 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            db.execSQL("DROP TABLE IF EXISTS "+Table_Name1);
-            onCreate(db);
+        db.execSQL("DROP TABLE IF EXISTS " + Table_Name1);
+        onCreate(db);
     }
 
-    public boolean putData(String lvl, String chno, String chname, String sectno, String sectname, String sectdata, String sectexp){
-        SQLiteDatabase db =this.getWritableDatabase();
+    public void putData(String lvl, String chno, String chname, String sectno, String sectname, String sectdata, String sectexp) {
+        SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(column1_1, lvl);
-        contentValues.put(column2_1, chno);
-        contentValues.put(column3_1, chname);
-        contentValues.put(column4_1, sectno);
-        contentValues.put(column5_1, sectname);
-        contentValues.put(column6_1, sectdata);
-        contentValues.put(column7_1, sectexp);
-        long data = db.insert(Table_Name1,null,contentValues);
-        if (data==-1)
-        {
-            return false;
-        }else {
-            return true;
-        }
+        contentValues.put(column1, lvl);
+        contentValues.put(column2, chno);
+        contentValues.put(column3, chname);
+        contentValues.put(column4, sectno);
+        contentValues.put(column5, sectname);
+        contentValues.put(column6, sectdata);
+        contentValues.put(column7, sectexp);
+        long data = db.insert(Table_Name1, null, contentValues);
     }
 
 
-    public Cursor getData(String lvl,String chno,String chnm,String sectno)
-    {
+    public Cursor getData(String lvl, String chno, String chnm, String sectno) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String[] projections={column5_1,column6_1,column7_1};
-        String selection=column1_1+" LIKE ? AND "+column2_1+" LIKE ? AND "+column3_1+" LIKE ? AND "+column4_1+" LIKE ?";
-        String[] selection_args={lvl,chno,chnm,sectno};
-        Cursor cr=db.query(Table_Name1,projections,selection,selection_args,null,null,null);
+        String[] projections = {column5, column6, column7};
+        String selection = column1 + " LIKE ? AND " + column2 + " LIKE ? AND " + column3 + " LIKE ? AND " + column4 + " LIKE ?";
+        String[] selection_args = {lvl, chno, chnm, sectno};
+        Cursor cr = db.query(Table_Name1, projections, selection, selection_args, null, null, null);
         return cr;
     }
 
-    public Cursor getSectioNames(String lvl,String chnm){
+    public Cursor getSectioNames(String lvl, String chnm) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String[] projections={column5_1};
-        String selection=column1_1+" LIKE ?"+" AND "+column3_1+" LIKE ?";
-        String[] selection_args={lvl,chnm};
-        Cursor cr=db.query(Table_Name1,projections,selection,selection_args,null,null,null);
+        String[] projections = {column5};
+        String selection = column1 + " LIKE ?" + " AND " + column3 + " LIKE ?";
+        String[] selection_args = {lvl, chnm};
+        Cursor cr = db.query(Table_Name1, projections, selection, selection_args, null, null, null);
         return cr;
     }
 
-    public Cursor getChapterNames(String lvl){
+    public Cursor getChapterNames(String lvl) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String[] projections ={column2_1,column3_1};
-        String selection=column1_1+" LIKE ?";
-        String[] selection_args={lvl};
-        String  order=column2_1+" ASC";
-        Cursor cr=db.query(Table_Name1,projections,selection,selection_args,null,null,order);
+        String[] projections = {column2, column3};
+        String selection = column1 + " LIKE ?";
+        String[] selection_args = {lvl};
+        String order = column2 + " ASC";
+        Cursor cr = db.query(Table_Name1, projections, selection, selection_args, null, null, order);
         return cr;
     }
+
+    public Cursor checkIfDataExists(String lvl, String chno, String chname, String sectno, String sectname) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String[] projections = {column1, column2, column3, column4, column5};
+        String selection = column1 +" LIKE ? AND "+ column2 +" LIKE ? AND "+ column3 +" LIKE ? AND "+ column4 +" LIKE ? AND " + column5 + " LIKE ?";
+        String[] selection_args={lvl,chno,chname,sectno,sectname};
+        Cursor cr = db.query(Table_Name1, projections, selection, selection_args, null, null, null);
+        return cr;
+    }
+
+    public void deleteExistingRow(String lvl, String chno, String chname, String sectno, String sectname) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String selection = column1 +" LIKE ? AND "+ column2 +" LIKE ? AND "+ column3 +" LIKE ? AND "+ column4 +" LIKE ? AND " + column5 + " LIKE ?";
+        String[] selection_args={lvl,chno,chname,sectno,sectname};
+         db.delete(Table_Name1, selection, selection_args);
+    }
+
+
 
 }

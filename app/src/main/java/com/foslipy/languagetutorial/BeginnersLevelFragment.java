@@ -60,7 +60,7 @@ public class BeginnersLevelFragment extends Fragment {
         chapNo = new ArrayList<>();
 
         if (connection.isConnected()) {
-            Toast.makeText(getActivity(), "Your are Online", Toast.LENGTH_LONG).show();
+
             db = FirebaseDatabase.getInstance().getReference();
             db.addValueEventListener(new ValueEventListener() {
                 @Override
