@@ -59,6 +59,13 @@ public class ChaptersData extends AppCompatActivity {
                         text_example.setVisibility(View.INVISIBLE);
                         SectionExample.setVisibility(View.INVISIBLE);
 
+
+
+                        Cursor cr1 = offlineDB.getData(Level, Chapter_no, Chapter_name, Section_no);
+                        if(cr1.getCount()==0)
+                        {
+                            offlineDB.putData(Level, Chapter_no, Chapter_name, Section_no, Section_name, Section_data, Section_example);
+                        }
                     }
                 }
 

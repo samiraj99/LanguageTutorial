@@ -115,7 +115,7 @@ public class BeginnersLevelFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent SecList = new Intent(getActivity(), ChaptersData.class);
-                String chname = chapter1name.getText().toString();
+                String chname = chapter2name.getText().toString();
                 SecList.putExtra("Level", Level);
                 SecList.putExtra("Chapter_no", "Chapter2");
                 SecList.putExtra("chapter_name", chname);
@@ -127,9 +127,9 @@ public class BeginnersLevelFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent SecList = new Intent(getActivity(), SectionList.class);
-                String chname = chapter1name.getText().toString();
+                String chname = chapter3name.getText().toString();
                 SecList.putExtra("Level", Level);
-                SecList.putExtra("Chapter_no", "Chapter1");
+                SecList.putExtra("Chapter_no", "Chapter3");
                 SecList.putExtra("chapter_name", chname);
                 startActivity(SecList);
             }
@@ -139,9 +139,9 @@ public class BeginnersLevelFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent SecList = new Intent(getActivity(), SectionList.class);
-                String chname = chapter1name.getText().toString();
+                String chname = chapter4name.getText().toString();
                 SecList.putExtra("Level", Level);
-                SecList.putExtra("Chapter_no", "Chapter1");
+                SecList.putExtra("Chapter_no", "Chapter4");
                 SecList.putExtra("chapter_name", chname);
                 startActivity(SecList);
             }
@@ -152,7 +152,7 @@ public class BeginnersLevelFragment extends Fragment {
             public void onClick(View view) {
                 Intent SecList = new Intent(getActivity(), SectionList.class);
                 SecList.putExtra("Level", Level);
-                SecList.putExtra("Chapter_no", "Chapter1");
+                SecList.putExtra("Chapter_no", "Chapter5");
                 startActivity(SecList);
             }
         });
