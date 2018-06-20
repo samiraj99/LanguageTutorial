@@ -60,6 +60,7 @@ public class QuizList extends AppCompatActivity {
                 int no=i+1;
                 QuizPage.putExtra("Level",Level);
                 QuizPage.putExtra("ChapterNo","Chapter"+no);
+                QuizPage.putExtra("QuizNo",no);
                 startActivity(QuizPage);
             }
         });

@@ -7,6 +7,7 @@ import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,8 +29,11 @@ TextView Image_first_name,Email;
 FirebaseUser user;
 String uid;
 ProgressDialog dialog;
+ProgressBar ProgressBar_Beginners,ProgressBar_Advance,ProgressBar_Expert;
 TextView Btn_Edit,Btn_Done;
 String User_first_name,User_last_name,User_email,User_occupation;
+float TotalNoOfChapters,TotalNoChaptersComplete,TotalNoOfQuizComplete;
+float Percentage;
 @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,8 +48,14 @@ String User_first_name,User_last_name,User_email,User_occupation;
         Occupation=findViewById(R.id.Profile_occupation);
         Btn_Done=findViewById(R.id.Profile_button_done);
         Btn_Edit=findViewById(R.id.Profile_button_edit);
-
+        ProgressBar_Advance=findViewById(R.id.Advance_Progressbar);
         dialog=new ProgressDialog(this);
+        ProgressBar_Beginners=findViewById(R.id.Beginners_Progressbar);
+        ProgressBar_Expert=findViewById(R.id.Expert_Progressbar);
+
+        SetProgressBar("Beginners");
+        SetProgressBar("Advance");
+        SetProgressBar("Expert");
 
         dialog.setMessage("Loading..!");
         dialog.show();
@@ -138,5 +148,53 @@ String User_first_name,User_last_name,User_email,User_occupation;
                 }
             }
         });
+    }
+
+    private void SetProgressBar(final String Level) {
+        databaseReference.child("Languages").child("Java").child(Level).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                TotalNoOfChapters =  dataSnapshot.getChildrenCount();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        databaseReference.child("Users").child(uid).child("Progress").child(Level).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                TotalNoChaptersComplete=  dataSnapshot.child("Chapters").getChildrenCount();
+                TotalNoOfQuizComplete=  dataSnapshot.child("Quizzes").getChildrenCount();
+
+                float  Score=TotalNoChaptersComplete+TotalNoOfQuizComplete;
+                Toast.makeText(ProfileActivity.this, ""+Score, Toast.LENGTH_SHORT).show();
+
+                Percentage=0;
+                if(TotalNoOfChapters != 0){
+                    Percentage = ( Score*100 )/ (TotalNoOfChapters*2);
+                    Toast.makeText(ProfileActivity.this, "" + Percentage, Toast.LENGTH_SHORT).show();
+                }
+                if (Level.equals("Beginners"))
+                {
+                    ProgressBar_Beginners.setProgress((int) Percentage);
+                }
+                if (Level.equals("Advance"))
+                {
+                    ProgressBar_Advance.setProgress((int) Percentage);
+                }
+                if (Level.equals("Expert"))
+                {
+                    ProgressBar_Expert.setProgress((int) Percentage);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
     }
 }
