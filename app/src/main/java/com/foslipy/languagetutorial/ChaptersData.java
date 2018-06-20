@@ -26,13 +26,15 @@ public class ChaptersData extends AppCompatActivity {
     Context ctx = this;
     DatabaseHelper offlineDB;
     ConnectionDetector connection;
-    Button Next,Previous,Finish;
-    int Limit,No;
+    Button Next, Previous, Finish;
+    int Limit, No;
     FirebaseAuth firebaseAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chapters_data);
+
         Level = getIntent().getExtras().getString("Level");
         Chapter_no = getIntent().getExtras().getString("Chapter_no");
         Chapter_name = getIntent().getExtras().getString("chapter_name");
@@ -44,19 +46,19 @@ public class ChaptersData extends AppCompatActivity {
         text_example = findViewById(R.id.text_view_example);
         connection = new ConnectionDetector(this);
         offlineDB = new DatabaseHelper(ctx);
-        Next=findViewById(R.id.Button_next);
-        Previous=findViewById(R.id.Button_previous);
-        Finish=findViewById(R.id.Button_finish);
-        Limit=getIntent().getExtras().getInt("Limit");
-        No=getIntent().getExtras().getInt("No");
-        firebaseAuth=FirebaseAuth.getInstance();
+        Next = findViewById(R.id.Button_next);
+        Previous = findViewById(R.id.Button_previous);
+        Finish = findViewById(R.id.Button_finish);
+        Limit = getIntent().getExtras().getInt("Limit");
+        No = getIntent().getExtras().getInt("No");
+        firebaseAuth = FirebaseAuth.getInstance();
         AddData();
 
         Next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 No++;
-                Section_no="Section"+No;
+                Section_no = "Section" + No;
                 AddData();
             }
         });
@@ -64,7 +66,7 @@ public class ChaptersData extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 No--;
-                Section_no="Section"+No;
+                Section_no = "Section" + No;
                 AddData();
             }
         });
@@ -78,18 +80,15 @@ public class ChaptersData extends AppCompatActivity {
     }
 
     private void AddData() {
-        if(No==1)
-        {
+        if (No == 1) {
             Previous.setVisibility(View.INVISIBLE);
-        }else
-        {
+        } else {
             Previous.setVisibility(View.VISIBLE);
         }
-        if (No==Limit)
-        {
+        if (No == Limit) {
             Next.setVisibility(View.INVISIBLE);
             Finish.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             Next.setVisibility(View.VISIBLE);
             Finish.setVisibility(View.INVISIBLE);
         }
@@ -109,21 +108,15 @@ public class ChaptersData extends AppCompatActivity {
                     if (Section_example == null) {
                         text_example.setVisibility(View.INVISIBLE);
                         SectionExample.setVisibility(View.INVISIBLE);
-
-                        Cursor cr1 = offlineDB.checkIfDataExists(Level,Chapter_no, Chapter_name, Section_no,Section_name);
-                        if(cr1.getCount()==1)
-                        {
-                            offlineDB.deleteExistingRow(Level,Chapter_no,Section_no);
-                            Toast.makeText(getApplicationContext(),"Existing data deleted",Toast.LENGTH_LONG).show();
-                        }
-                        offlineDB.putData(Level, Chapter_no, Chapter_name, Section_no, Section_name, Section_data, Section_example);
-
                     }
-                    if (Section_example!=null)
-                    {
-                        text_example.setVisibility(View.VISIBLE);
-                        SectionExample.setVisibility(View.VISIBLE);
+                    Cursor cr1 = offlineDB.checkIfDataExists(Level, Chapter_no, Chapter_name, Section_no, Section_name);
+                    if (cr1.getCount() == 1) {
+                        offlineDB.deleteExistingRow(Level, Chapter_no, Section_no);
+                        Toast.makeText(getApplicationContext(), "Existing data deleted", Toast.LENGTH_LONG).show();
                     }
+
+                    offlineDB.putData(Level, Chapter_no, Chapter_name, Section_no, Section_name, Section_data, Section_example);
+
 
                 }
 
@@ -134,7 +127,7 @@ public class ChaptersData extends AppCompatActivity {
             });
         }
 
-        if(!connection.isConnected()){
+        if (!connection.isConnected()) {
             Cursor cr = offlineDB.getData(Level, Chapter_no, Chapter_name, Section_no);
             if (cr.moveToFirst()) {
                 do {
@@ -151,8 +144,8 @@ public class ChaptersData extends AppCompatActivity {
                     }
 
                 } while (cr.moveToNext());
-            }else {
-                ShowwMessage("No Data Found","");
+            } else {
+                ShowwMessage("No Data Found", "");
             }
         }
     }

@@ -1,26 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/text"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Home"
-        android:textAlignment="center"
-        android:textSize="30sp" />
+        android:orientation="vertical">
+<TextView
+    android:id="@+id/tv"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textSize="30sp"
+    />
 
-
-    <TextView
-        android:id="@+id/viewProfile"
+    <GridLayout
+        android:id="@+id/beginners_grid"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:text="View Profile_Temp"
-        android:textAlignment="center"
-        android:textSize="30sp" />
+        android:layout_height="match_parent"
+        android:alignmentMode="alignMargins"
+        android:columnCount="2"
+        android:rowCount="8">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/CardView_language_java"
+            android:layout_width="0dp"
+            android:layout_height="175dp"
+            android:layout_columnWeight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_rowWeight="1"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="10dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="130dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/java" />
+
+            <RadioButton
+                android:id="@+id/java_rb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:text="Java"
+                android:textSize="35sp" />
 
 
-</LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/CardView_Language_C"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_rowWeight="1"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="10dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="130dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/c_programming" />
+
+            <RadioButton
+                android:id="@+id/c_rb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:text="C Programming"
+                android:textSize="19sp" />
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/CardView_Language_php"
+            android:layout_width="0dp"
+            android:layout_height="175dp"
+            android:layout_columnWeight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_rowWeight="1"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="10dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/php" />
+
+            <RadioButton
+                android:id="@+id/php_rb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:text="PHP"
+                android:textSize="35sp" />
+
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/CardView_Language_Ruby"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_rowWeight="1"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="10dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="130dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ruby" />
+
+            <RadioButton
+                android:id="@+id/Ruby_rb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:text="Ruby"
+                android:textSize="35sp" />
+        </android.support.v7.widget.CardView>
+
+
+    </GridLayout>
+
+    </LinearLayout>
+
+</ScrollView>

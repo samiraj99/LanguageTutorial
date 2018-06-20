@@ -18,6 +18,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String column5 = "section_name";
     public static final String column6 = "section_data";
     public static final String column7 = "section_example";
+    public static final String Table_Name2 = "userData";
 
     public DatabaseHelper(Context context) {
         super(context, DB_Name, null, version);
@@ -25,7 +26,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
         db.execSQL("create table content (levels TEXT,chapter_no VARCHAR,chapter_name VARCHAR,section_no VARCHAR,section_name VARCHAR,section_data VARCHAR,section_example VARCHAR)");
+
     }
 
     @Override

@@ -23,36 +23,37 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ProfileActivity extends AppCompatActivity {
 
-DatabaseReference databaseReference;
-TextInputEditText First_name,Last_name,Occupation;
-TextView Image_first_name,Email;
-FirebaseUser user;
-String uid;
-ProgressDialog dialog;
-ProgressBar ProgressBar_Beginners,ProgressBar_Advance,ProgressBar_Expert;
-TextView Btn_Edit,Btn_Done;
-String User_first_name,User_last_name,User_email,User_occupation;
-float TotalNoOfChapters,TotalNoChaptersComplete,TotalNoOfQuizComplete;
-float Percentage;
-@Override
+    DatabaseReference databaseReference;
+    TextInputEditText First_name, Last_name, Occupation;
+    TextView Image_first_name, Email;
+    FirebaseUser user;
+    String uid;
+    ProgressDialog dialog;
+    ProgressBar ProgressBar_Beginners, ProgressBar_Advance, ProgressBar_Expert;
+    TextView Btn_Edit, Btn_Done;
+    String User_first_name, User_last_name, User_email, User_occupation;
+    float TotalNoOfChapters, TotalNoChaptersComplete, TotalNoOfQuizComplete;
+    float Percentage;
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        user= FirebaseAuth.getInstance().getCurrentUser();
-        uid=user.getUid();
-        databaseReference= FirebaseDatabase.getInstance().getReference();
-        Image_first_name=findViewById(R.id.Profile_Image_first_name);
-        First_name=findViewById(R.id.Profile_first_name);
-        Last_name=findViewById(R.id.Profile_last_name);
-        Email=findViewById(R.id.Profile_image_email);
-        Occupation=findViewById(R.id.Profile_occupation);
-        Btn_Done=findViewById(R.id.Profile_button_done);
-        Btn_Edit=findViewById(R.id.Profile_button_edit);
-        ProgressBar_Advance=findViewById(R.id.Advance_Progressbar);
-        dialog=new ProgressDialog(this);
-        ProgressBar_Beginners=findViewById(R.id.Beginners_Progressbar);
-        ProgressBar_Expert=findViewById(R.id.Expert_Progressbar);
 
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        uid = user.getUid();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        Image_first_name = findViewById(R.id.Profile_Image_first_name);
+        First_name = findViewById(R.id.Profile_first_name);
+        Last_name = findViewById(R.id.Profile_last_name);
+        Email = findViewById(R.id.Profile_image_email);
+        Occupation = findViewById(R.id.Profile_occupation);
+        Btn_Done = findViewById(R.id.Profile_button_done);
+        Btn_Edit = findViewById(R.id.Profile_button_edit);
+        ProgressBar_Advance = findViewById(R.id.Advance_Progressbar);
+        ProgressBar_Beginners = findViewById(R.id.Beginners_Progressbar);
+        ProgressBar_Expert = findViewById(R.id.Expert_Progressbar);
+        dialog = new ProgressDialog(this);
         SetProgressBar("Beginners");
         SetProgressBar("Advance");
         SetProgressBar("Expert");
@@ -62,10 +63,10 @@ float Percentage;
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                 User_first_name=dataSnapshot.child("Users").child(uid).child("Info").child("FirstName").getValue(String.class);
-                 User_last_name=dataSnapshot.child("Users").child(uid).child("Info").child("LastName").getValue(String.class);
-                 User_email=dataSnapshot.child("Users").child(uid).child("Info").child("Email").getValue(String.class);
-                 User_occupation=dataSnapshot.child("Users").child(uid).child("Info").child("Occupation").getValue(String.class);
+                User_first_name = dataSnapshot.child("Users").child(uid).child("Info").child("FirstName").getValue(String.class);
+                User_last_name = dataSnapshot.child("Users").child(uid).child("Info").child("LastName").getValue(String.class);
+                User_email = dataSnapshot.child("Users").child(uid).child("Info").child("Email").getValue(String.class);
+                User_occupation = dataSnapshot.child("Users").child(uid).child("Info").child("Occupation").getValue(String.class);
 
                 Image_first_name.setText(User_first_name);
                 First_name.setText(User_first_name);
@@ -73,11 +74,11 @@ float Percentage;
                 Email.setText(User_email);
                 Occupation.setText(User_occupation);
 
-                if (User_email.length()>1)
-                {
+                if (User_email.length() > 1) {
                     dialog.dismiss();
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -107,28 +108,24 @@ float Percentage;
             @Override
             public void onClick(View view) {
 
-                User_first_name=First_name.getText().toString();
-                User_last_name=Last_name.getText().toString();
-                User_occupation=Occupation.getText().toString();
+                User_first_name = First_name.getText().toString();
+                User_last_name = Last_name.getText().toString();
+                User_occupation = Occupation.getText().toString();
 
 
-                if(TextUtils.isEmpty(User_first_name))
-                {
+                if (TextUtils.isEmpty(User_first_name)) {
                     First_name.setError("Fields can't be Empty");
-                }else if(TextUtils.isEmpty(User_last_name))
-                {
+                } else if (TextUtils.isEmpty(User_last_name)) {
                     Last_name.setError("Fields can't be Empty");
-                }else if(TextUtils.isEmpty(User_occupation))
-                {
+                } else if (TextUtils.isEmpty(User_occupation)) {
                     Last_name.setError("Fields can't be Empty");
-                }else {
+                } else {
                     RegistrationData data = new RegistrationData(User_first_name, User_last_name, User_occupation, User_email);
                     databaseReference.child("Users").child(uid).child("Info").setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
 
-                            if (task.isSuccessful())
-                            {
+                            if (task.isSuccessful()) {
 
                                 First_name.setEnabled(false);
                                 Last_name.setEnabled(false);
@@ -154,7 +151,7 @@ float Percentage;
         databaseReference.child("Languages").child("Java").child(Level).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                TotalNoOfChapters =  dataSnapshot.getChildrenCount();
+                TotalNoOfChapters = dataSnapshot.getChildrenCount();
             }
 
             @Override
@@ -165,27 +162,24 @@ float Percentage;
         databaseReference.child("Users").child(uid).child("Progress").child(Level).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                TotalNoChaptersComplete=  dataSnapshot.child("Chapters").getChildrenCount();
-                TotalNoOfQuizComplete=  dataSnapshot.child("Quizzes").getChildrenCount();
+                TotalNoChaptersComplete = dataSnapshot.child("Chapters").getChildrenCount();
+                TotalNoOfQuizComplete = dataSnapshot.child("Quizzes").getChildrenCount();
 
-                float  Score=TotalNoChaptersComplete+TotalNoOfQuizComplete;
-                Toast.makeText(ProfileActivity.this, ""+Score, Toast.LENGTH_SHORT).show();
+                float Score = TotalNoChaptersComplete + TotalNoOfQuizComplete;
+                Toast.makeText(ProfileActivity.this, "" + Score, Toast.LENGTH_SHORT).show();
 
-                Percentage=0;
-                if(TotalNoOfChapters != 0){
-                    Percentage = ( Score*100 )/ (TotalNoOfChapters*2);
+                Percentage = 0;
+                if (TotalNoOfChapters != 0) {
+                    Percentage = (Score * 100) / (TotalNoOfChapters * 2);
                     Toast.makeText(ProfileActivity.this, "" + Percentage, Toast.LENGTH_SHORT).show();
                 }
-                if (Level.equals("Beginners"))
-                {
+                if (Level.equals("Beginners")) {
                     ProgressBar_Beginners.setProgress((int) Percentage);
                 }
-                if (Level.equals("Advance"))
-                {
+                if (Level.equals("Advance")) {
                     ProgressBar_Advance.setProgress((int) Percentage);
                 }
-                if (Level.equals("Expert"))
-                {
+                if (Level.equals("Expert")) {
                     ProgressBar_Expert.setProgress((int) Percentage);
                 }
             }

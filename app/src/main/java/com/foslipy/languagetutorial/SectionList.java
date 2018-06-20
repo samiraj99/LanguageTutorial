@@ -1,5 +1,6 @@
 package com.foslipy.languagetutorial;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -110,13 +111,20 @@ public class SectionList extends AppCompatActivity {
                 }
             });
         }
-
     }
     public void ShowwMessage(String title, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(true);
         builder.setTitle(title);
         builder.setMessage(message);
+        builder.setNegativeButton("Check Network", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                startActivity(new Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS));
+            }
+        });
+        builder.create();
         builder.show();
     }
+
 }
