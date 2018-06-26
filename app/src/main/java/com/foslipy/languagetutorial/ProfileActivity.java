@@ -30,7 +30,7 @@ public class ProfileActivity extends AppCompatActivity {
     String uid;
     ProgressDialog dialog;
     ProgressBar ProgressBar_Beginners, ProgressBar_Advance, ProgressBar_Expert;
-    TextView Btn_Edit, Btn_Done;
+    TextView Btn_Edit, Btn_Done,Text_beginners_progress,Text_advance_progress,Text_expert_progress;
     String User_first_name, User_last_name, User_email, User_occupation;
     float TotalNoOfChapters, TotalNoChaptersComplete, TotalNoOfQuizComplete;
     float Percentage;
@@ -53,10 +53,10 @@ public class ProfileActivity extends AppCompatActivity {
         ProgressBar_Advance = findViewById(R.id.Advance_Progressbar);
         ProgressBar_Beginners = findViewById(R.id.Beginners_Progressbar);
         ProgressBar_Expert = findViewById(R.id.Expert_Progressbar);
+        Text_beginners_progress=findViewById(R.id.text_progress_beginners);
+        Text_advance_progress=findViewById(R.id.text_progress_advance);
+        Text_expert_progress=findViewById(R.id.text_progress_expert);
         dialog = new ProgressDialog(this);
-        SetProgressBar("Beginners");
-        SetProgressBar("Advance");
-        SetProgressBar("Expert");
 
         dialog.setMessage("Loading..!");
         dialog.show();
@@ -84,6 +84,10 @@ public class ProfileActivity extends AppCompatActivity {
 
             }
         });
+
+        SetProgressBar("Beginners");
+        SetProgressBar("Advance");
+        SetProgressBar("Expert");
 
         Btn_Edit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -166,24 +170,24 @@ public class ProfileActivity extends AppCompatActivity {
                 TotalNoOfQuizComplete = dataSnapshot.child("Quizzes").getChildrenCount();
 
                 float Score = TotalNoChaptersComplete + TotalNoOfQuizComplete;
-                Toast.makeText(ProfileActivity.this, "" + Score, Toast.LENGTH_SHORT).show();
 
                 Percentage = 0;
                 if (TotalNoOfChapters != 0) {
                     Percentage = (Score * 100) / (TotalNoOfChapters * 2);
-                    Toast.makeText(ProfileActivity.this, "" + Percentage, Toast.LENGTH_SHORT).show();
                 }
                 if (Level.equals("Beginners")) {
                     ProgressBar_Beginners.setProgress((int) Percentage);
+                    Text_beginners_progress.setText((int) Percentage+"%");
                 }
                 if (Level.equals("Advance")) {
                     ProgressBar_Advance.setProgress((int) Percentage);
+                    Text_advance_progress.setText((int) Percentage+"%");
                 }
                 if (Level.equals("Expert")) {
                     ProgressBar_Expert.setProgress((int) Percentage);
+                    Text_expert_progress.setText((int) Percentage+"%");
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 

@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -91,6 +92,11 @@ public class QuizActivity extends AppCompatActivity {
       Next.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
+              if(radioGroup.getCheckedRadioButtonId() == -1)
+              {
+                  Toast.makeText(QuizActivity.this, "Select Option ..!", Toast.LENGTH_SHORT).show();
+                  return;
+              }
 
               if (count==Limit-2)
               {

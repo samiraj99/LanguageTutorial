@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/profile"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.foslipy.languagetutorial.ProfileActivity"
-    >
+    tools:context="com.foslipy.languagetutorial.ProfileActivity">
 
      <LinearLayout
         android:layout_width="match_parent"
@@ -17,7 +15,7 @@
              android:id="@+id/Relative_Layout"
              android:layout_width="match_parent"
              android:layout_height="220dp"
-             android:background="@android:color/holo_blue_light"
+             android:background="#FFCDD2"
              android:focusable="true"
              android:focusableInTouchMode="true"
              >
@@ -35,7 +33,7 @@
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
                  android:text=""
-                 android:textColor="@android:color/white"
+                 android:textColor="#D32F2F"
                  android:textSize="20sp"
                  android:layout_centerHorizontal="true"
                  android:layout_marginTop="160dp"
@@ -49,6 +47,7 @@
                  android:textSize="20sp"
                  android:textStyle="italic"
                  android:text=""
+                 android:textColor="@color/black"
                  />
 
          </RelativeLayout>
@@ -73,7 +72,15 @@
                  android:textColor="#000"
                  android:layout_marginLeft="10dp"
                  android:layout_marginStart="10dp" />
-
+                <TextView
+                    android:id="@+id/text_progress_beginners"
+                    android:padding="5dp"
+                    android:layout_marginStart="270dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    />
              <ProgressBar
                  android:id="@+id/Beginners_Progressbar"
                  style="?android:attr/progressBarStyleHorizontal"
@@ -85,7 +92,6 @@
                  android:layout_marginStart="16dp"
                  android:layout_marginRight="20dp"
                  android:layout_marginEnd="20dp"
-                 android:progress="10"
                  />
              <TextView
                  android:id="@+id/text_view_advance"
@@ -99,6 +105,16 @@
                  android:layout_marginLeft="10dp"
                  android:layout_marginStart="10dp"
                  />
+                <TextView
+                    android:id="@+id/text_progress_advance"
+                    android:layout_below="@id/Beginners_Progressbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:layout_marginStart="270dp"
+                    android:padding="5dp"
+                    android:textColor="@color/black"
+                    />
 
              <ProgressBar
                  android:id="@+id/Advance_Progressbar"
@@ -124,6 +140,16 @@
                  android:layout_marginStart="10dp"
                  android:textColor="#000"
                  />
+                <TextView
+                    android:id="@+id/text_progress_expert"
+                    android:layout_below="@id/Advance_Progressbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:layout_marginStart="270dp"
+                    android:padding="5dp"
+                    android:textColor="@color/black"
+                    />
                 <ProgressBar
                     android:id="@+id/Expert_Progressbar"
                     style="?android:attr/progressBarStyleHorizontal"
@@ -169,7 +195,7 @@
                     android:layout_marginStart="295dp"
                     android:layout_marginTop="6dp"
                     android:textSize="18sp"
-                    android:textColor="@android:color/holo_blue_light"
+                    android:textColor="#D32F2F"
                     android:visibility="visible"
                     />
 
@@ -182,7 +208,7 @@
                      android:layout_marginStart="290dp"
                      android:layout_marginTop="6dp"
                      android:textSize="18sp"
-                     android:textColor="@android:color/holo_blue_light"
+                     android:textColor="#D32F2F"
                      android:visibility="invisible"
                      />
                 <android.support.design.widget.TextInputLayout

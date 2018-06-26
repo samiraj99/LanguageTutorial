@@ -3,6 +3,7 @@ package com.foslipy.languagetutorial;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -18,10 +19,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Registration extends AppCompatActivity {
 
     Button SignIn;
-    EditText FirstName,LastName,Email,Occupation,Pass;
+    TextInputEditText FirstName,LastName,Email,Occupation,Pass;
     FirebaseAuth firebaseAuth;
     DatabaseReference databaseReference;
     ProgressDialog dialog;
@@ -55,13 +59,29 @@ public class Registration extends AppCompatActivity {
 
                 if(TextUtils.isEmpty(St_Email))
                 {
-                    Toast.makeText(Registration.this, "Enter Email ...!", Toast.LENGTH_SHORT).show();
+                    Email.setError("Please enter email.");
                     return;
-                }else if(TextUtils.isEmpty(St_Pass))
+                }if(TextUtils.isEmpty(St_Pass))
                 {
-                    Toast.makeText(Registration.this, "Enter Password ...!", Toast.LENGTH_SHORT).show();
+                    Pass.setError("Please enter password.");
+                    return;
+                }if(TextUtils.isEmpty(St_FirstName)) {
+                    FirstName.setError("Fields can't be empty.");
+                    return;
+                }if (TextUtils.isEmpty(St_LastName)) {
+                    LastName.setError("Fields can't be empty.");
+                    return;
+                }if (TextUtils.isEmpty(St_Occupation)){
+                    Occupation.setError("Fields can't be empty.");
+                    return;
+                }if (St_Pass.length() < 8) {
+                    Pass.setError("Password should be more than 8 chars");
+                    return;
+                }if(!emailValidator(St_Email)){
+                    Email.setError("Please Enter Valid Email Address");
                     return;
                 }
+
                 dialog.setMessage("Signing up ...!");
                 dialog.show();
                 firebaseAuth.createUserWithEmailAndPassword(St_Email,St_Pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -71,14 +91,22 @@ public class Registration extends AppCompatActivity {
                         if(task.isSuccessful())
                         {
                             Regist();
-
-                        }else {
-                          }
+                        }
 
                     }
                 });
 
 
+            }
+
+            private boolean emailValidator(String st_email) {
+
+                Pattern pattern;
+                Matcher matcher;
+                final String EMAIL_PATTERN="^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
+                pattern=Pattern.compile(EMAIL_PATTERN);
+                matcher=pattern.matcher(st_email);
+                return matcher.matches();
             }
         });
 
