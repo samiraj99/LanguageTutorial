@@ -1,6 +1,8 @@
 package com.foslipy.languagetutorial;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,8 +11,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,7 +22,7 @@ public class ChaptersData extends AppCompatActivity {
 
     DatabaseReference databaseReference;
     TextView SectionName, SectionData, SectionExample, text_example, temptv;
-    String Level, Chapter_no, Chapter_name, Section_no, Section_name, Section_data, Section_example;
+    String Level, Language, Chapter_no, Chapter_name, Section_no, Section_name, Section_data, Section_example;
     Context ctx = this;
     DatabaseHelper offlineDB;
     ConnectionDetector connection;
@@ -36,6 +36,7 @@ public class ChaptersData extends AppCompatActivity {
         setContentView(R.layout.activity_chapters_data);
 
         Level = getIntent().getExtras().getString("Level");
+        Language = getIntent().getExtras().getString("Language");
         Chapter_no = getIntent().getExtras().getString("Chapter_no");
         Chapter_name = getIntent().getExtras().getString("chapter_name");
         Section_no = getIntent().getExtras().getString("Section_no");
@@ -97,9 +98,9 @@ public class ChaptersData extends AppCompatActivity {
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    Section_name = dataSnapshot.child("Languages").child("Java").child(Level).child(Chapter_no).child("Sections").child(Section_no).child("SectionName").getValue(String.class);
-                    Section_data = dataSnapshot.child("Languages").child("Java").child(Level).child(Chapter_no).child("Sections").child(Section_no).child("SectionData").getValue(String.class);
-                    Section_example = dataSnapshot.child("Languages").child("Java").child(Level).child(Chapter_no).child("Sections").child(Section_no).child("SectionExample").getValue(String.class);
+                    Section_name = dataSnapshot.child("Languages").child(Language).child(Level).child(Chapter_no).child("Sections").child(Section_no).child("SectionName").getValue(String.class);
+                    Section_data = dataSnapshot.child("Languages").child(Language).child(Level).child(Chapter_no).child("Sections").child(Section_no).child("SectionData").getValue(String.class);
+                    Section_example = dataSnapshot.child("Languages").child(Language).child(Level).child(Chapter_no).child("Sections").child(Section_no).child("SectionExample").getValue(String.class);
 
                     SectionName.setText(Section_name);
                     SectionData.setText(Section_data);
@@ -109,13 +110,8 @@ public class ChaptersData extends AppCompatActivity {
                         text_example.setVisibility(View.INVISIBLE);
                         SectionExample.setVisibility(View.INVISIBLE);
                     }
-                    Cursor cr1 = offlineDB.checkIfDataExists(Level, Chapter_no, Chapter_name, Section_no, Section_name);
-                    if (cr1.getCount() == 1) {
-                        offlineDB.deleteExistingRow(Level, Chapter_no, Section_no);
-                        Toast.makeText(getApplicationContext(), "Existing data deleted", Toast.LENGTH_LONG).show();
-                    }
 
-                    offlineDB.putData(Level, Chapter_no, Chapter_name, Section_no, Section_name, Section_data, Section_example);
+                    offlineDB.putData(Language, Level, Chapter_no, Chapter_name, Section_no, Section_name, Section_data, Section_example);
 
 
                 }
@@ -128,7 +124,7 @@ public class ChaptersData extends AppCompatActivity {
         }
 
         if (!connection.isConnected()) {
-            Cursor cr = offlineDB.getData(Level, Chapter_no, Chapter_name, Section_no);
+            Cursor cr = offlineDB.getData(Language, Level, Chapter_no, Chapter_name, Section_no);
             if (cr.moveToFirst()) {
                 do {
                     String name, data, example;
@@ -155,6 +151,13 @@ public class ChaptersData extends AppCompatActivity {
         builder.setCancelable(true);
         builder.setTitle(title);
         builder.setMessage(message);
+        builder.setNegativeButton("Check Network", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                startActivity(new Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS));
+            }
+        });
+        builder.create();
         builder.show();
     }
 

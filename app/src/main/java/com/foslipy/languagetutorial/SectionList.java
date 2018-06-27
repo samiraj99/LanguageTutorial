@@ -26,7 +26,7 @@ public class SectionList extends AppCompatActivity {
 
     ListView list;
     ArrayList<String> SectionNames = new ArrayList<>();
-    String Level, Chapter_no, Chapter_name;
+    String Level, Language, Chapter_no, Chapter_name;
     DatabaseHelper offlineDB;
     ConnectionDetector cd;
 
@@ -36,6 +36,7 @@ public class SectionList extends AppCompatActivity {
         setContentView(R.layout.activity_section_list);
         list = findViewById(R.id.List_view);
         Level = getIntent().getExtras().getString("Level");
+        Language = getIntent().getExtras().getString("Language");
         Chapter_no = getIntent().getExtras().getString("Chapter_no");
         Chapter_name = getIntent().getExtras().getString("chapter_name");
 
@@ -45,8 +46,7 @@ public class SectionList extends AppCompatActivity {
         cd = new ConnectionDetector(this);
 
         if (cd.isConnected()) {
-
-            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Languages").child("Java").child(Level).child(Chapter_no).child("Sections");
+            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Languages").child(Language).child(Level).child(Chapter_no).child("Sections");
             ref.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -74,18 +74,24 @@ public class SectionList extends AppCompatActivity {
                     Intent ChData = new Intent(SectionList.this, ChaptersData.class);
                     int no = i + 1;
                     ChData.putExtra("Level", Level);
+                    ChData.putExtra("Language", Language);
                     ChData.putExtra("Chapter_no", Chapter_no);
                     ChData.putExtra("chapter_name", Chapter_name);
                     ChData.putExtra("Section_no", "Section" + no);
+                    ChData.putExtra("No", no);
+                    ChData.putExtra("Limit", SectionNames.size());
                     startActivity(ChData);
                 }
             });
 
         }
+
+
+
         if (!cd.isConnected()) {
             ArrayList<String> SectionNames2 = new ArrayList<>();
             offlineDB = new DatabaseHelper(this);
-            Cursor sectnames = offlineDB.getSectioNames(Level, Chapter_name);
+            Cursor sectnames = offlineDB.getSectionNames(Language, Level, Chapter_name);
             if (sectnames.moveToFirst()) {
                 do {
                     String sect;
@@ -94,7 +100,7 @@ public class SectionList extends AppCompatActivity {
                 } while (sectnames.moveToNext());
 
             } else {
-                ShowwMessage("No Data Found","Please conect to the Internet");
+                ShowwMessage("No Data Found", "Please conect to the Internet");
             }
             ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, SectionNames2);
             list.setAdapter(adapter2);
@@ -104,14 +110,18 @@ public class SectionList extends AppCompatActivity {
                     Intent ChData = new Intent(SectionList.this, ChaptersData.class);
                     int no = i + 1;
                     ChData.putExtra("Level", Level);
+                    ChData.putExtra("Language", Language);
                     ChData.putExtra("Chapter_no", Chapter_no);
                     ChData.putExtra("chapter_name", Chapter_name);
                     ChData.putExtra("Section_no", "Section" + no);
+                    ChData.putExtra("No", no);
+                    ChData.putExtra("Limit", SectionNames.size());
                     startActivity(ChData);
                 }
             });
         }
     }
+
     public void ShowwMessage(String title, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(true);

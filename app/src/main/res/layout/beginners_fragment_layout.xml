@@ -2,25 +2,21 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
+    android:layout_height="match_parent">
 
     <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/bg_raining_sky_blue"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/sum"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Beginner Level"
+                android:text="Beginners Level"
                 android:textAlignment="center"
                 android:textSize="30sp"
                 android:textStyle="bold" />
@@ -60,7 +56,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center|bottom"
-                        android:text=""
+                        android:text="Chapter 1"
                         android:textSize="30sp"
                         android:textStyle="bold" />
 
@@ -189,6 +185,7 @@
                         android:src="@drawable/books5" />
 
                     <TextView
+                        android:id="@+id/chapter5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center|bottom"
@@ -267,10 +264,7 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_columnWeight="1"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="10dp"
+
                     android:layout_rowWeight="1"
                     app:cardCornerRadius="16dp"
                     app:cardElevation="10dp">
@@ -359,82 +353,21 @@
 
                 </android.support.v7.widget.CardView>
 
-                <android.support.v7.widget.CardView
-                    android:id="@+id/chapter_11"
-                    android:layout_width="0dp"
-                    android:layout_height="175dp"
-                    android:layout_columnWeight="1"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_rowWeight="1"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="10dp">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="130dp"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="10dp"
-                        android:src="@drawable/books5" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center|bottom"
-                        android:text="Chapter 11"
-                        android:textSize="30sp" />
-
-                </android.support.v7.widget.CardView>
-
-                <android.support.v7.widget.CardView
-                    android:id="@+id/chapter_12"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_columnWeight="1"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_rowWeight="1"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="10dp">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="130dp"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="10dp"
-                        android:src="@drawable/many_books" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center|bottom"
-                        android:text="Chapter 12"
-                        android:textSize="30sp" />
-
-                </android.support.v7.widget.CardView>
-
             </GridLayout>
 
         </LinearLayout>
 
     </ScrollView>
 
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/Float_button_quiz"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="28dp"
-        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="46dp"
+        android:layout_marginEnd="73dp"
         android:src="@drawable/ic_assignment_black_24dp" />
 
 

@@ -15,11 +15,11 @@ public class HomeFragment extends Fragment {
     View view;
     CardView java, cprogramming, php, ruby;
     String language_selected;
-    TextView tv;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.home_fragment_layout, container, false);
+
 
         java = view.findViewById(R.id.CardView_language_java);
         cprogramming = view.findViewById(R.id.CardView_Language_C);
@@ -31,7 +31,6 @@ public class HomeFragment extends Fragment {
         final RadioButton phpRadioButton = view.findViewById(R.id.php_rb);
         final RadioButton rubyRadioButton = view.findViewById(R.id.Ruby_rb);
 
-        tv = view.findViewById(R.id.tv);
 
         java.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,7 +40,7 @@ public class HomeFragment extends Fragment {
                 phpRadioButton.setChecked(false);
                 cRadioButton.setChecked(false);
                 language_selected="Java";
-                tv.setText(language_selected);
+                Helper.language=language_selected;
             }
         });
         cprogramming.setOnClickListener(new View.OnClickListener() {
@@ -52,7 +51,7 @@ public class HomeFragment extends Fragment {
                 javaRadioButton.setChecked(false);
                 phpRadioButton.setChecked(false);
                 language_selected="C Programming";
-                tv.setText(language_selected);
+                Helper.language=language_selected;
             }
         });
         php.setOnClickListener(new View.OnClickListener() {
@@ -63,7 +62,7 @@ public class HomeFragment extends Fragment {
                 javaRadioButton.setChecked(false);
                 cRadioButton.setChecked(false);
                 language_selected="PHP";
-                tv.setText(language_selected);
+                Helper.language=language_selected;
             }
         });
 
@@ -75,7 +74,7 @@ public class HomeFragment extends Fragment {
                 phpRadioButton.setChecked(false);
                 cRadioButton.setChecked(false);
                 language_selected="Ruby";
-                tv.setText(language_selected);
+                Helper.language=language_selected;
             }
         });
 
@@ -86,7 +85,7 @@ public class HomeFragment extends Fragment {
                 phpRadioButton.setChecked(false);
                 cRadioButton.setChecked(false);
                 language_selected="Java";
-                tv.setText(language_selected);
+                Helper.language=language_selected;
             }
         });
 
@@ -98,7 +97,7 @@ public class HomeFragment extends Fragment {
                 phpRadioButton.setChecked(false);
                 cRadioButton.setChecked(false);
                 language_selected="C Programming";
-                tv.setText(language_selected);
+                Helper.language=language_selected;
             }
         });
 
@@ -109,7 +108,7 @@ public class HomeFragment extends Fragment {
                 javaRadioButton.setChecked(false);
                 cRadioButton.setChecked(false);
                 language_selected="PHP";
-                tv.setText(language_selected);
+                Helper.language=language_selected;
             }
         });
 
@@ -120,7 +119,7 @@ public class HomeFragment extends Fragment {
                 phpRadioButton.setChecked(false);
                 cRadioButton.setChecked(false);
                 language_selected="Ruby";
-                tv.setText(language_selected);
+                Helper.language=language_selected;
             }
         });
 

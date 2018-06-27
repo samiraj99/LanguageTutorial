@@ -11,8 +11,10 @@ import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,18 +26,22 @@ import java.util.ArrayList;
 public class BeginnersLevelFragment extends Fragment {
     View view;
     CardView CH1, CH2, CH3, CH4, CH5, CH6, CH7, CH8, CH9, CH10;
-    TextView chapter1name, chapter2name, chapter3name, chapter4name;
+    TextView chapter1name, chapter2name, chapter3name, chapter4name, chapter5name;
     String Level = "Beginners";
     DatabaseHelper offlineDb;
     ConnectionDetector connection;
     ArrayList<String> chapNames;
     ArrayList<String> chapNo;
     DatabaseReference db;
+    String Language;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.beginners_fragment_layout, container, false);
+
+        Language = Helper.language;
+
 
         CH1 = view.findViewById(R.id.CardView_Beginners_chapter_1);
         CH2 = view.findViewById(R.id.CardView_Beginners_chapter_2);
@@ -52,11 +58,13 @@ public class BeginnersLevelFragment extends Fragment {
         chapter2name = view.findViewById(R.id.chapter2);
         chapter3name = view.findViewById(R.id.chapter3);
         chapter4name = view.findViewById(R.id.chapter4);
+        chapter5name = view.findViewById(R.id.chapter5);
 
         offlineDb = new DatabaseHelper(getActivity());
         connection = new ConnectionDetector(getActivity());
         chapNames = new ArrayList<>();
         chapNo = new ArrayList<>();
+
 
         if (connection.isConnected()) {
 
@@ -64,13 +72,13 @@ public class BeginnersLevelFragment extends Fragment {
             db.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    String chapter_name = dataSnapshot.child("Languages").child("Java").child("Beginners").child("Chapter1").child("ChapterName").getValue(String.class);
+                    String chapter_name = dataSnapshot.child("Languages").child(Language).child("Beginners").child("Chapter1").child("ChapterName").getValue(String.class);
                     chapter1name.setText(chapter_name);
-                    chapter_name = dataSnapshot.child("Languages").child("Java").child("Beginners").child("Chapter2").child("ChapterName").getValue(String.class);
+                    chapter_name = dataSnapshot.child("Languages").child(Language).child("Beginners").child("Chapter2").child("ChapterName").getValue(String.class);
                     chapter2name.setText(chapter_name);
-                    chapter_name = dataSnapshot.child("Languages").child("Java").child("Beginners").child("Chapter3").child("ChapterName").getValue(String.class);
+                    chapter_name = dataSnapshot.child("Languages").child(Language).child("Beginners").child("Chapter3").child("ChapterName").getValue(String.class);
                     chapter3name.setText(chapter_name);
-                    chapter_name = dataSnapshot.child("Languages").child("Java").child("Beginners").child("Chapter4").child("ChapterName").getValue(String.class);
+                    chapter_name = dataSnapshot.child("Languages").child(Language).child("Beginners").child("Chapter4").child("ChapterName").getValue(String.class);
                     chapter4name.setText(chapter_name);
                 }
 
@@ -81,9 +89,9 @@ public class BeginnersLevelFragment extends Fragment {
             });
 
         }
-        if(!connection.isConnected()){
+        if (!connection.isConnected()) {
             Toast.makeText(getActivity(), "Your are Offline", Toast.LENGTH_LONG).show();
-            Cursor chapnames = offlineDb.getChapterNames(Level);
+            Cursor chapnames = offlineDb.getChapterNames(Language,Level);
             if (chapnames.moveToFirst()) {
                 do {
                     String sect;
@@ -97,13 +105,13 @@ public class BeginnersLevelFragment extends Fragment {
             }
         }
 
-
         CH1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent SecList = new Intent(getActivity(), SectionList.class);
                 String chname = chapter1name.getText().toString();
                 SecList.putExtra("Level", Level);
+                SecList.putExtra("Language",Language);
                 SecList.putExtra("Chapter_no", "Chapter1");
                 SecList.putExtra("chapter_name", chname);
                 startActivity(SecList);
@@ -116,6 +124,7 @@ public class BeginnersLevelFragment extends Fragment {
                 Intent SecList = new Intent(getActivity(), SectionList.class);
                 String chname = chapter2name.getText().toString();
                 SecList.putExtra("Level", Level);
+                SecList.putExtra("Language",Language);
                 SecList.putExtra("Chapter_no", "Chapter2");
                 SecList.putExtra("chapter_name", chname);
                 startActivity(SecList);
@@ -128,6 +137,7 @@ public class BeginnersLevelFragment extends Fragment {
                 Intent SecList = new Intent(getActivity(), SectionList.class);
                 String chname = chapter3name.getText().toString();
                 SecList.putExtra("Level", Level);
+                SecList.putExtra("Language",Language);
                 SecList.putExtra("Chapter_no", "Chapter3");
                 SecList.putExtra("chapter_name", chname);
                 startActivity(SecList);
@@ -140,6 +150,7 @@ public class BeginnersLevelFragment extends Fragment {
                 Intent SecList = new Intent(getActivity(), SectionList.class);
                 String chname = chapter4name.getText().toString();
                 SecList.putExtra("Level", Level);
+                SecList.putExtra("Language",Language);
                 SecList.putExtra("Chapter_no", "Chapter4");
                 SecList.putExtra("chapter_name", chname);
                 startActivity(SecList);
@@ -151,6 +162,7 @@ public class BeginnersLevelFragment extends Fragment {
             public void onClick(View view) {
                 Intent SecList = new Intent(getActivity(), SectionList.class);
                 SecList.putExtra("Level", Level);
+                SecList.putExtra("Language",Language);
                 SecList.putExtra("Chapter_no", "Chapter5");
                 startActivity(SecList);
             }
@@ -161,6 +173,7 @@ public class BeginnersLevelFragment extends Fragment {
             public void onClick(View view) {
                 Intent SecList = new Intent(getActivity(), SectionList.class);
                 SecList.putExtra("Level", Level);
+                SecList.putExtra("Language",Language);
                 SecList.putExtra("Chapter_no", "Chapter1");
                 startActivity(SecList);
             }
@@ -171,6 +184,7 @@ public class BeginnersLevelFragment extends Fragment {
             public void onClick(View view) {
                 Intent SecList = new Intent(getActivity(), SectionList.class);
                 SecList.putExtra("Level", Level);
+                SecList.putExtra("Language",Language);
                 SecList.putExtra("Chapter_no", "Chapter1");
                 startActivity(SecList);
             }
@@ -180,6 +194,7 @@ public class BeginnersLevelFragment extends Fragment {
             public void onClick(View view) {
                 Intent SecList = new Intent(getActivity(), SectionList.class);
                 SecList.putExtra("Level", Level);
+                SecList.putExtra("Language",Language);
                 SecList.putExtra("Chapter_no", "Chapter1");
                 startActivity(SecList);
             }
@@ -189,6 +204,7 @@ public class BeginnersLevelFragment extends Fragment {
             public void onClick(View view) {
                 Intent SecList = new Intent(getActivity(), SectionList.class);
                 SecList.putExtra("Level", Level);
+                SecList.putExtra("Language",Language);
                 SecList.putExtra("Chapter_no", "Chapter1");
                 startActivity(SecList);
             }
@@ -198,6 +214,7 @@ public class BeginnersLevelFragment extends Fragment {
             public void onClick(View view) {
                 Intent SecList = new Intent(getActivity(), SectionList.class);
                 SecList.putExtra("Level", Level);
+                SecList.putExtra("Language",Language);
                 SecList.putExtra("Chapter_no", "Chapter1");
                 startActivity(SecList);
             }

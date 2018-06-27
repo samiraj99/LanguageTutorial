@@ -29,12 +29,14 @@ public class ExpertLevelFragment extends Fragment {
     ArrayList<String> chapNames;
     ArrayList<String> chapNo;
     DatabaseReference db;
+    String Language;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.expert_fragment_layout, container, false);
 
+        Language = Helper.language;
 
         CH1 = view.findViewById(R.id.CardView_Expert_chapter_1);
         CH2 = view.findViewById(R.id.CardView_Expert_chapter_2);
@@ -70,7 +72,7 @@ public class ExpertLevelFragment extends Fragment {
         }
         if(!connection.isConnected()){
             Toast.makeText(getActivity(), "Your are Offline", Toast.LENGTH_LONG).show();
-            Cursor chapnames = offlineDb.getChapterNames(Level);
+            Cursor chapnames = offlineDb.getChapterNames(Language,Level);
             if (chapnames.moveToFirst()) {
                 do {
                     String sect;

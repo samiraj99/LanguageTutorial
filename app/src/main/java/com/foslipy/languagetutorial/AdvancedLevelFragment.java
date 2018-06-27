@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.daimajia.androidanimations.library.specials.in.LandingAnimator;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,6 +36,8 @@ public class AdvancedLevelFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.advanced_fragment_layout, container, false);
 
+        String Language;
+        Language = Helper.language;
         CH1 = view.findViewById(R.id.CardView_Advanced_chapter_1);
         CH2 = view.findViewById(R.id.CardView_Advanced_chapter_2);
         CH3 = view.findViewById(R.id.CardView_Advanced_chapter_3);
@@ -68,7 +71,7 @@ public class AdvancedLevelFragment extends Fragment {
         }
         if(!connection.isConnected()){
             Toast.makeText(getActivity(), "Your are Offline", Toast.LENGTH_LONG).show();
-            Cursor chapnames = offlineDb.getChapterNames(Level);
+            Cursor chapnames = offlineDb.getChapterNames(Language,Level);
             if (chapnames.moveToFirst()) {
                 do {
                     String sect;
