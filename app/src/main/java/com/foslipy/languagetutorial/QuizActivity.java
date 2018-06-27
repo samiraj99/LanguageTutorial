@@ -1,7 +1,9 @@
 package com.foslipy.languagetutorial;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -145,4 +147,34 @@ public class QuizActivity extends AppCompatActivity {
         Radio_btn_Option4.setText(Option4.get(count));
         Answer=QuestionAnswer.get(count);
     }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder=new AlertDialog.Builder(QuizActivity.this);
+        builder.setTitle("Alert");
+        builder.setMessage("You can't go back. \n Data will be lost.");
+        builder.setIcon(R.drawable.icons8_error_64);
+        builder.setCancelable(false);
+
+        builder.setPositiveButton(
+                "Cancel",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+        builder.setNegativeButton(
+                "Exit",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                    }
+                });
+        builder.create();
+        builder.show();
+
+    }
 }
+

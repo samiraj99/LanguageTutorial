@@ -94,6 +94,9 @@ public class ChaptersData extends AppCompatActivity {
             Finish.setVisibility(View.INVISIBLE);
         }
 
+        text_example.setVisibility(View.VISIBLE);
+        SectionExample.setVisibility(View.VISIBLE);
+
         if (connection.isConnected()) {
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -107,8 +110,8 @@ public class ChaptersData extends AppCompatActivity {
                     SectionExample.setText(Section_example);
 
                     if (Section_example == null) {
-                        text_example.setVisibility(View.INVISIBLE);
-                        SectionExample.setVisibility(View.INVISIBLE);
+                        text_example.setVisibility(View.GONE);
+                        SectionExample.setVisibility(View.GONE);
                     }
 
 

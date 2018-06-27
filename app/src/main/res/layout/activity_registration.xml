@@ -21,6 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/Text_view_SignUp"
+        android:layout_marginTop="20dp"
         >
         <android.support.design.widget.TextInputEditText
             android:id="@+id/ET_First_name"
@@ -113,9 +114,9 @@
         android:id="@+id/BT_Sign_In"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/ET_Pass_layout"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="70dp"
+        android:layout_marginTop="5dp"
         android:background="#F44336"
         android:text="@string/sign_in"
         android:textColor="@android:color/white" />
