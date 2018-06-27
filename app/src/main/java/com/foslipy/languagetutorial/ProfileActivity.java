@@ -152,7 +152,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void SetProgressBar(final String Level) {
-        databaseReference.child("Languages").child("Java").child(Level).addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Languages").child(Helper.language).child(Level).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 TotalNoOfChapters = dataSnapshot.getChildrenCount();
@@ -163,7 +163,7 @@ public class ProfileActivity extends AppCompatActivity {
 
             }
         });
-        databaseReference.child("Users").child(uid).child("Progress").child(Level).addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Users").child(uid).child("Progress").child(Helper.language).child(Level).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 TotalNoChaptersComplete = dataSnapshot.child("Chapters").getChildrenCount();

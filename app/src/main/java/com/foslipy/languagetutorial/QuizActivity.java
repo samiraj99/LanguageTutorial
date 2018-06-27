@@ -109,7 +109,11 @@ public class QuizActivity extends AppCompatActivity {
               }
               else
               {
-                  databaseReference.child("Users").child(firebaseAuth.getUid()).child("Progress").child(Level).child("Quizzes").child("Quiz"+QuizNo).setValue("IsCompleted");
+
+                  if((Marks*100)/Limit>=50)
+                  {
+                      databaseReference.child("Users").child(firebaseAuth.getUid()).child("Progress").child(Helper.language).child(Level).child("Quizzes").child("Quiz"+QuizNo).setValue("IsCompleted");
+                  }
                   Intent result = new Intent(QuizActivity.this,QuizResult.class);
                   result.putExtra("TotalQuestions",Limit);
                   result.putExtra("CorrectAns",Marks);

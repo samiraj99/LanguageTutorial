@@ -75,7 +75,7 @@ public class ChaptersData extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
-                databaseReference.child("Users").child(firebaseAuth.getUid()).child("Progress").child(Level).child("Chapters").child(Chapter_no).setValue("IsCompleted");
+                databaseReference.child("Users").child(firebaseAuth.getUid()).child("Progress").child(Language).child(Level).child("Chapters").child(Chapter_no).setValue("IsCompleted");
             }
         });
     }
