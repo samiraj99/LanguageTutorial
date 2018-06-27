@@ -20,6 +20,8 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.home_fragment_layout, container, false);
 
+        language_selected="Java";
+        Helper.language=language_selected;
 
         java = view.findViewById(R.id.CardView_language_java);
         cprogramming = view.findViewById(R.id.CardView_Language_C);

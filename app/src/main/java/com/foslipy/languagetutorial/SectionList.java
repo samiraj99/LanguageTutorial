@@ -91,7 +91,7 @@ public class SectionList extends AppCompatActivity {
         if (!cd.isConnected()) {
             ArrayList<String> SectionNames2 = new ArrayList<>();
             offlineDB = new DatabaseHelper(this);
-            Cursor sectnames = offlineDB.getSectionNames(Language, Level, Chapter_name);
+            Cursor sectnames = offlineDB.getSectionNames(Language, Level, Chapter_no);
             if (sectnames.moveToFirst()) {
                 do {
                     String sect;
@@ -100,7 +100,7 @@ public class SectionList extends AppCompatActivity {
                 } while (sectnames.moveToNext());
 
             } else {
-                ShowwMessage("No Data Found", "Please conect to the Internet");
+                ShowwMessage("No Data Found", "Please connect to the Internet");
             }
             ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, SectionNames2);
             list.setAdapter(adapter2);

@@ -111,6 +111,11 @@ public class ChaptersData extends AppCompatActivity {
                         SectionExample.setVisibility(View.INVISIBLE);
                     }
 
+
+                    Cursor d=offlineDB.checkIfDataExists(Language,Level,Chapter_no,Chapter_name,Section_no,Section_name);
+                    if(d.getCount()!=0){
+                        offlineDB.deleteExistingRow(Language,Level,Chapter_no,Section_no);
+                    }
                     offlineDB.putData(Language, Level, Chapter_no, Chapter_name, Section_no, Section_name, Section_data, Section_example);
 
 

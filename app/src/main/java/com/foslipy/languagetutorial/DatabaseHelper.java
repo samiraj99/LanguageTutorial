@@ -11,7 +11,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DB_Name = "LanguageTutorials.db";
     public static final int version = 1;
     public static final String Table_Name1 = "content";
-    public static final String column1 = "language";
+    public static final String column1 = "languages";
     public static final String column2 = "levels";
     public static final String column3 = "chapter_no";
     public static final String column4 = "chapter_name";
@@ -65,7 +65,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Cursor getSectionNames(String lng, String lvl, String chno) {
         SQLiteDatabase db = this.getWritableDatabase();
         String[] projections = {column6};
-        String selection = column1 + " LIKE ? AND" + column2 + " LIKE ? AND " + column3 + " LIKE ?";
+        String selection = column1 + " LIKE ? AND " + column2 + " LIKE ? AND " + column3 + " LIKE ?";
         String[] selection_args = {lng, lvl, chno};
         String order = column5 + " ASC";
         Cursor cr = db.query(Table_Name1, projections, selection, selection_args, null, null, order);
@@ -86,15 +86,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         String[] projections = {column1, column2, column3, column4, column5, column6};
         String selection = column1 + " LIKE ? AND " + column2 + " LIKE ? AND " + column3 + " LIKE ? AND " + column4 + " LIKE ? AND " + column5 + " LIKE ? AND " + column6 + " LIKE ?";
-        String[] selection_args = {lng,lvl, chno, chname, sectno, sectname};
+        String[] selection_args = {lng, lvl, chno, chname, sectno, sectname};
         Cursor cr = db.query(Table_Name1, projections, selection, selection_args, null, null, null);
         return cr;
     }
 
-    public void deleteExistingRow(String lng,String lvl, String chno, String sectno) {
+    public void deleteExistingRow(String lng, String lvl, String chno, String sectno) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String selection = column1 + " LIKE ? AND " + column2 + " LIKE ? AND "+column3 +" LIKE ? AND"+ column5 + " LIKE ?";
-        String[] selection_args = {lvl, chno, sectno};
+        String selection = column1 + " LIKE ? AND " + column2 + " LIKE ? AND " + column3 + " LIKE ? AND " + column5 + " LIKE ?";
+        String[] selection_args = {lng, lvl, chno, sectno};
         db.delete(Table_Name1, selection, selection_args);
     }
 
