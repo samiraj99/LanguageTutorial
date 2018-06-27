@@ -11,7 +11,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -109,7 +108,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout, new ExpertLevelFragment()).commit();
                 break;
             case R.id.Ranking_menu:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout, new RankingFagment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmest_container_frame_layout, new RankingFragment()).commit();
                 break;
             case R.id.Logout_menu:
                 firebaseAuth.signOut();
