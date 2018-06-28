@@ -287,7 +287,7 @@ public class HomeFragment extends Fragment {
                 rubyRadioButton.setChecked(false);
                 swiftRadioButton.setChecked(false);
                 xmlRadioButton.setChecked(false);
-                language_selected = "C#";
+                language_selected = "C Sharp";
                 Helper.language = language_selected;
             }
         });

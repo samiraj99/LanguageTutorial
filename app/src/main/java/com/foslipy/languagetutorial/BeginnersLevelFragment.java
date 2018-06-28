@@ -26,7 +26,7 @@ import java.util.ArrayList;
 public class BeginnersLevelFragment extends Fragment {
     View view;
     CardView CH1, CH2, CH3, CH4, CH5, CH6, CH7, CH8, CH9, CH10;
-    TextView chapter1name, chapter2name, chapter3name, chapter4name, chapter5name;
+    TextView chapter1name, chapter2name, chapter3name, chapter4name, chapter5name, chapter6name, chapter7name, chapter8name, chapter9name, chapter10name;
     String Level = "Beginners";
     DatabaseHelper offlineDb;
     ConnectionDetector connection;
@@ -59,6 +59,11 @@ public class BeginnersLevelFragment extends Fragment {
         chapter3name = view.findViewById(R.id.chapter3);
         chapter4name = view.findViewById(R.id.chapter4);
         chapter5name = view.findViewById(R.id.chapter5);
+        chapter6name = view.findViewById(R.id.chapter6);
+        chapter7name = view.findViewById(R.id.chapter7);
+        chapter8name = view.findViewById(R.id.chapter8);
+        chapter9name = view.findViewById(R.id.chapter9);
+        chapter10name = view.findViewById(R.id.chapter10);
 
         offlineDb = new DatabaseHelper(getActivity());
         connection = new ConnectionDetector(getActivity());
@@ -72,14 +77,26 @@ public class BeginnersLevelFragment extends Fragment {
             db.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    String chapter_name = dataSnapshot.child("Languages").child(Language).child("Beginners").child("Chapter1").child("ChapterName").getValue(String.class);
+                    String chapter_name = dataSnapshot.child("Languages").child(Language).child(Level).child("Chapter1").child("ChapterName").getValue(String.class);
                     chapter1name.setText(chapter_name);
-                    chapter_name = dataSnapshot.child("Languages").child(Language).child("Beginners").child("Chapter2").child("ChapterName").getValue(String.class);
+                    chapter_name = dataSnapshot.child("Languages").child(Language).child(Level).child("Chapter2").child("ChapterName").getValue(String.class);
                     chapter2name.setText(chapter_name);
-                    chapter_name = dataSnapshot.child("Languages").child(Language).child("Beginners").child("Chapter3").child("ChapterName").getValue(String.class);
+                    chapter_name = dataSnapshot.child("Languages").child(Language).child(Level).child("Chapter3").child("ChapterName").getValue(String.class);
                     chapter3name.setText(chapter_name);
-                    chapter_name = dataSnapshot.child("Languages").child(Language).child("Beginners").child("Chapter4").child("ChapterName").getValue(String.class);
+                    chapter_name = dataSnapshot.child("Languages").child(Language).child(Level).child("Chapter4").child("ChapterName").getValue(String.class);
                     chapter4name.setText(chapter_name);
+                    chapter_name = dataSnapshot.child("Languages").child(Language).child(Level).child("Chapter5").child("ChapterName").getValue(String.class);
+                    chapter5name.setText(chapter_name);
+                    chapter_name = dataSnapshot.child("Languages").child(Language).child(Level).child("Chapter6").child("ChapterName").getValue(String.class);
+                    chapter6name.setText(chapter_name);
+                    chapter_name = dataSnapshot.child("Languages").child(Language).child(Level).child("Chapter7").child("ChapterName").getValue(String.class);
+                    chapter7name.setText(chapter_name);
+                    chapter_name = dataSnapshot.child("Languages").child(Language).child(Level).child("Chapter8").child("ChapterName").getValue(String.class);
+                    chapter8name.setText(chapter_name);
+                    chapter_name = dataSnapshot.child("Languages").child(Language).child(Level).child("Chapter9").child("ChapterName").getValue(String.class);
+                    chapter9name.setText(chapter_name);
+                    chapter_name = dataSnapshot.child("Languages").child(Language).child(Level).child("Chapter10").child("ChapterName").getValue(String.class);
+                    chapter10name.setText(chapter_name);
                 }
 
                 @Override
@@ -91,7 +108,7 @@ public class BeginnersLevelFragment extends Fragment {
         }
         if (!connection.isConnected()) {
             Toast.makeText(getActivity(), "Your are Offline", Toast.LENGTH_LONG).show();
-            Cursor chapnames = offlineDb.getChapterNames(Language,Level);
+            Cursor chapnames = offlineDb.getChapterNames(Language, Level);
             if (chapnames.moveToFirst()) {
                 do {
                     String sect;
@@ -109,11 +126,10 @@ public class BeginnersLevelFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent SecList = new Intent(getActivity(), SectionList.class);
-                String chname = chapter1name.getText().toString();
                 SecList.putExtra("Level", Level);
-                SecList.putExtra("Language",Language);
+                SecList.putExtra("Language", Language);
                 SecList.putExtra("Chapter_no", "Chapter1");
-                SecList.putExtra("chapter_name", chname);
+                SecList.putExtra("chapter_name", chapter1name.getText().toString());
                 startActivity(SecList);
             }
         });
@@ -122,11 +138,10 @@ public class BeginnersLevelFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent SecList = new Intent(getActivity(), SectionList.class);
-                String chname = chapter2name.getText().toString();
                 SecList.putExtra("Level", Level);
-                SecList.putExtra("Language",Language);
+                SecList.putExtra("Language", Language);
                 SecList.putExtra("Chapter_no", "Chapter2");
-                SecList.putExtra("chapter_name", chname);
+                SecList.putExtra("chapter_name", chapter2name.getText().toString());
                 startActivity(SecList);
             }
         });
@@ -135,11 +150,10 @@ public class BeginnersLevelFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent SecList = new Intent(getActivity(), SectionList.class);
-                String chname = chapter3name.getText().toString();
                 SecList.putExtra("Level", Level);
-                SecList.putExtra("Language",Language);
+                SecList.putExtra("Language", Language);
                 SecList.putExtra("Chapter_no", "Chapter3");
-                SecList.putExtra("chapter_name", chname);
+                SecList.putExtra("chapter_name", chapter3name.getText().toString());
                 startActivity(SecList);
             }
         });
@@ -148,11 +162,10 @@ public class BeginnersLevelFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent SecList = new Intent(getActivity(), SectionList.class);
-                String chname = chapter4name.getText().toString();
                 SecList.putExtra("Level", Level);
-                SecList.putExtra("Language",Language);
+                SecList.putExtra("Language", Language);
                 SecList.putExtra("Chapter_no", "Chapter4");
-                SecList.putExtra("chapter_name", chname);
+                SecList.putExtra("chapter_name", chapter4name.getText().toString());
                 startActivity(SecList);
             }
         });
@@ -162,8 +175,9 @@ public class BeginnersLevelFragment extends Fragment {
             public void onClick(View view) {
                 Intent SecList = new Intent(getActivity(), SectionList.class);
                 SecList.putExtra("Level", Level);
-                SecList.putExtra("Language",Language);
+                SecList.putExtra("Language", Language);
                 SecList.putExtra("Chapter_no", "Chapter5");
+                SecList.putExtra("Chapter_name", chapter5name.getText().toString());
                 startActivity(SecList);
             }
         });
@@ -173,8 +187,9 @@ public class BeginnersLevelFragment extends Fragment {
             public void onClick(View view) {
                 Intent SecList = new Intent(getActivity(), SectionList.class);
                 SecList.putExtra("Level", Level);
-                SecList.putExtra("Language",Language);
-                SecList.putExtra("Chapter_no", "Chapter1");
+                SecList.putExtra("Language", Language);
+                SecList.putExtra("Chapter_no", "Chapter6");
+                SecList.putExtra("Chapter_name", chapter6name.getText().toString());
                 startActivity(SecList);
             }
         });
@@ -184,8 +199,9 @@ public class BeginnersLevelFragment extends Fragment {
             public void onClick(View view) {
                 Intent SecList = new Intent(getActivity(), SectionList.class);
                 SecList.putExtra("Level", Level);
-                SecList.putExtra("Language",Language);
-                SecList.putExtra("Chapter_no", "Chapter1");
+                SecList.putExtra("Language", Language);
+                SecList.putExtra("Chapter_no", "Chapter7");
+                SecList.putExtra("Chapter_name", chapter7name.getText().toString());
                 startActivity(SecList);
             }
         });
@@ -194,8 +210,9 @@ public class BeginnersLevelFragment extends Fragment {
             public void onClick(View view) {
                 Intent SecList = new Intent(getActivity(), SectionList.class);
                 SecList.putExtra("Level", Level);
-                SecList.putExtra("Language",Language);
-                SecList.putExtra("Chapter_no", "Chapter1");
+                SecList.putExtra("Language", Language);
+                SecList.putExtra("Chapter_no", "Chapter8");
+                SecList.putExtra("Chapter_name", chapter8name.getText().toString());
                 startActivity(SecList);
             }
         });
@@ -204,8 +221,9 @@ public class BeginnersLevelFragment extends Fragment {
             public void onClick(View view) {
                 Intent SecList = new Intent(getActivity(), SectionList.class);
                 SecList.putExtra("Level", Level);
-                SecList.putExtra("Language",Language);
-                SecList.putExtra("Chapter_no", "Chapter1");
+                SecList.putExtra("Language", Language);
+                SecList.putExtra("Chapter_no", "Chapter9");
+                SecList.putExtra("Chapter_name", chapter9name.getText().toString());
                 startActivity(SecList);
             }
         });
@@ -214,8 +232,9 @@ public class BeginnersLevelFragment extends Fragment {
             public void onClick(View view) {
                 Intent SecList = new Intent(getActivity(), SectionList.class);
                 SecList.putExtra("Level", Level);
-                SecList.putExtra("Language",Language);
-                SecList.putExtra("Chapter_no", "Chapter1");
+                SecList.putExtra("Language", Language);
+                SecList.putExtra("Chapter_no", "Chapter10");
+                SecList.putExtra("Chapter_name", chapter10name.getText().toString());
                 startActivity(SecList);
             }
         });
@@ -230,7 +249,6 @@ public class BeginnersLevelFragment extends Fragment {
                 startActivity(quizlist);
             }
         });
-
 
         return view;
     }

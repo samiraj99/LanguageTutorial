@@ -11,6 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -22,11 +24,10 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    private long backPressedTimer;
     private DrawerLayout homedrawerlayout;
     private ActionBarDrawerToggle homedrawertoggle;
     FirebaseAuth firebaseAuth;
-
-
     FirebaseUser user;
     String uid, User_first_name;
     DatabaseReference databaseReference;
@@ -121,4 +122,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         homedrawerlayout.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 }
