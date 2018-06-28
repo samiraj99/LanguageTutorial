@@ -59,7 +59,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center|bottom"
                         android:text="Chapter 1"
-                        android:textSize="30sp"
+                        android:textSize="19sp"
                         android:textStyle="bold" />
 
                 </android.support.v7.widget.CardView>
@@ -92,7 +92,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center|bottom"
                         android:text="Chapter 2"
-                        android:textSize="30sp"
+                        android:textSize="19sp"
                         android:textStyle="bold" />
 
                 </android.support.v7.widget.CardView>
@@ -125,7 +125,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center|bottom"
                         android:text="Chapter 3"
-                        android:textSize="30sp"
+                        android:textSize="19sp"
                         android:textStyle="bold" />
 
                 </android.support.v7.widget.CardView>
@@ -158,7 +158,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center|bottom"
                         android:text="Chapter 4"
-                        android:textSize="30sp"
+                        android:textSize="19sp"
                         android:textStyle="bold" />
 
                 </android.support.v7.widget.CardView>
@@ -192,7 +192,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center|bottom"
                         android:text="Chapter 5"
-                        android:textSize="30sp"
+                        android:textSize="19sp"
                         android:textStyle="bold" />
 
                 </android.support.v7.widget.CardView>
@@ -225,7 +225,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center|bottom"
                         android:text="Chapter 6"
-                        android:textSize="30sp"
+                        android:textSize="19sp"
                         android:textStyle="bold" />
 
                 </android.support.v7.widget.CardView>
@@ -258,7 +258,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center|bottom"
                         android:text="Chapter 7"
-                        android:textSize="30sp"
+                        android:textSize="19sp"
                         android:textStyle="bold" />
 
                 </android.support.v7.widget.CardView>
@@ -288,7 +288,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center|bottom"
                         android:text="Chapter 8"
-                        android:textSize="30sp"
+                        android:textSize="19sp"
                         android:textStyle="bold" />
 
                 </android.support.v7.widget.CardView>
@@ -322,7 +322,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center|bottom"
                         android:text="Chapter 9"
-                        android:textSize="30sp"
+                        android:textSize="19sp"
                         android:textStyle="bold" />
 
                 </android.support.v7.widget.CardView>
@@ -355,7 +355,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center|bottom"
                         android:text="Chapter 10"
-                        android:textSize="30sp"
+                        android:textSize="19sp"
                         android:textStyle="bold" />
 
                 </android.support.v7.widget.CardView>
@@ -364,7 +364,6 @@
             </GridLayout>
 
         </LinearLayout>
-
 
     </ScrollView>
 

@@ -17,12 +17,12 @@ public class Splash extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-
-        final Animation splash = AnimationUtils.loadAnimation(this, R.anim.splash);
+        tv = findViewById(R.id.tv);
 
         new CountDownTimer(3000, 500) {
             @Override
             public void onTick(long l) {
+
 
             }
 
