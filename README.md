@@ -15,7 +15,7 @@ which can be online or offline.
 <br>
 <br>
 
-![Navigation Drawer](IMG-20191026-WA0015.jpg)
-![Navigation Drawer](IMG-20191026-WA0016.jpg)
-![Navigation Drawer](IMG-20191026-WA0017.jpg)
-![Navigation Drawer](IMG-20191026-WA0018.jpg)
+<img src="IMG-20191026-WA0015.jpg" height="500">
+<img src="IMG-20191026-WA0016.jpg" height="500">
+<img src="IMG-20191026-WA0017.jpg" height="500">
+<img src="IMG-20191026-WA0018.jpg" height="500">
